@@ -13,6 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'friendly_id', '~> 5.1.0'
+gem 'paperclip-dropbox', '>= 1.1.7'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -24,7 +26,7 @@ gem 'friendly_id', '~> 5.1.0'
 # gem 'capistrano-rails', group: :development
 
 group :production do
-  gem "pg"
+  gem 'pg'
   gem 'rails_12factor'
 end
 
