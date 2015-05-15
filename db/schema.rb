@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515102823) do
+ActiveRecord::Schema.define(version: 20150515180244) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 20150515102823) do
     t.datetime "image_updated_at"
     t.string   "slug"
     t.integer  "user_id"
+    t.string   "departure"
+    t.string   "arrival"
+    t.string   "date"
   end
 
   add_index "listings", ["slug"], name: "index_listings_on_slug", unique: true

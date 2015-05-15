@@ -32,6 +32,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
+    @listing.name = "#{listing_params[:departure]}-#{listing_params[:arrival]}"
 
     respond_to do |format|
       if @listing.save
@@ -76,7 +77,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :description, :price, :image)
+      params.require(:listing).permit(:departure, :arrival, :description, :price, :image, :date)
     end
 
     def check_user
