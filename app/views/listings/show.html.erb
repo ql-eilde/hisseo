@@ -8,6 +8,10 @@
     <h3><%= @listing.name %></h3>
     <p><%= @listing.price %> <%= t('euro') %></p>
     <p><%= @listing.description %></p>
+    <br>
+    <div class="center">
+      <%= link_to "Réserver un trajet", new_listing_order_path(@listing), class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 
