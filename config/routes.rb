@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :listings do
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
 
   root 'listings#index'
 
   get 'manager' => "listings#manager"
+  get 'sales' => "orders#sales"
+  get 'purchases' => "orders#purchases"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

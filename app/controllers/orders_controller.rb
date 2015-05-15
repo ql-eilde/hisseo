@@ -2,6 +2,14 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  def sales
+    @orders = Order.all.where(seller: current_user).order("created_at DESC")
+  end
+
+  def purchases
+    @orders = Order.all.where(buyer: current_user).order("created_at DESC")
+  end
+
   # GET /orders
   # GET /orders.json
   def index
@@ -34,9 +42,23 @@ class OrdersController < ApplicationController
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
 
+    Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
+    token = params[:stripeToken]
+
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@listing.price * 100).floor,
+        :currency => "EUR",
+        :card => token
+        )
+      flash[:notice] = "Merci pour votre réservation !"
+    rescue
+      flash[:danger] = e.message
+    end
+
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }

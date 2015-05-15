@@ -1,0 +1,23 @@
+<div class="center">
+  <h2>Vos anciens trajets</h2>
+</div>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th class="center">Image</th>
+    <th class="center">Trajet</th>
+    <th class="center">Prix</th>
+    <th class="center">Passager</th>
+    <th class="center">Date</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td class="center"><%= image_tag order.listing.image.url(:thumb) %></td>
+      <td class="center"><%= order.listing.name %></td>
+      <td class="center"><%= order.listing.price %> <%= t('euro') %></td>
+      <td class="center"><%= order.buyer.first_name %></td>
+      <td class="center"><%= order.created_at.strftime("%B %-d, %Y") %></td>
+    </tr>
+  <% end %>
+</table>
