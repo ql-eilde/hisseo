@@ -13,10 +13,16 @@ class Listing < ActiveRecord::Base
 
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  validates :departure, :arrival, :description, :price, :date, presence: true
+  validates :departure, :arrival, :description, :price, :date, :nombre_passager, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates_attachment_presence :image
 
   belongs_to :user
   has_many :orders
+
+  def self.filter(filter1, filter2)
+    if filter1
+      where(slug: filter1, date: filter2)
+    end
+  end
 end

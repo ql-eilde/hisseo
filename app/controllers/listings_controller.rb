@@ -10,7 +10,12 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all.order("created_at DESC")
+    if params[:departure]
+      @test = "#{params[:departure].downcase}-#{params[:arrival].downcase}"
+      @listings = Listing.filter(@test, params[:date])
+    else
+      @listings = Listing.all.order("created_at DESC")
+    end
   end
 
   # GET /listings/1
@@ -77,7 +82,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:departure, :arrival, :description, :price, :image, :date)
+      params.require(:listing).permit(:departure, :arrival, :description, :price, :image, :date, :nombre_passager)
     end
 
     def check_user

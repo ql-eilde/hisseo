@@ -27,6 +27,16 @@
 
       <div class="form-group">
         <div class="row">
+          <div class="col-md-3">
+            <%= f.label :compte_passager, "Nombre de passagers" %>
+            <%#= f.text_field :compte_passager %>
+            <input class="form-control" type="text" name="compte_passager" id="compte_passager" value="<%= params[:compte_passager] %>" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
           <div class="col-md-8">
             <%= label_tag :card_number, "Numéro de votre carte de crédit" %>
             <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control" } %>

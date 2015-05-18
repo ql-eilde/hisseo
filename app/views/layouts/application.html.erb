@@ -22,6 +22,13 @@
     <% end %>
   <% end %>
 
+  <%= form_tag listings_path, method: "get" do %>
+  <input class="form-control" type="text" name="departure" id="departure" />
+  <input class="form-control" type="text" name="arrival" id="arrival" />
+  <input class="form-control" type="date" name="date" id="date" />
+  <%= submit_tag "Filter", name: nil %>
+<% end %>
+
 	<%= yield %>
 </div>
 

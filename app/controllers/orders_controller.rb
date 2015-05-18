@@ -47,13 +47,13 @@ class OrdersController < ApplicationController
 
     begin
       charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor,
+        :amount => (@listing.price * params[:compte_passager].to_i * 100).floor,
         :currency => "EUR",
         :card => token
         )
       flash[:notice] = "Merci pour votre réservation !"
     rescue
-      flash[:danger] = e.message
+      flash[:info] = e.message
     end
 
     respond_to do |format|
