@@ -3,6 +3,15 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field form-group">
+    <%= link_to "/users/auth/facebook", class: "btn btn-primary" do %>
+      <i class="fa fa-facebook-official fa-2x"></i>
+      <div id="join-facebook">S'inscrire avec Facebook</div>
+    <% end %>
+  </div>
+
+  <hr class="divider">
+
    <div class="form-group">
     <%= f.label :first_name, "Prénom" %>
     <%= f.text_field :first_name, :autofocus => true, class: "form-control" %>

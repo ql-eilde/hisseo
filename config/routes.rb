@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :orders
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   resources :listings do
     resources :orders, only: [:new, :create]
   end

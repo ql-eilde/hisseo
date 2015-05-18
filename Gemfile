@@ -18,6 +18,9 @@ gem 'figaro'
 gem 'devise'
 gem 'rails_admin'
 gem 'stripe'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'font-awesome-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

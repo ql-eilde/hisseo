@@ -1,7 +1,7 @@
-<% if request.url() == root_url %>
+<%# if request.url() == root_url %>
   <h1>Bienvenue sur Hisseo.</h1>
   <p>Prenez le large avec Hisseo</p>
-<% else %>
+<%# else %>
 
   <div class="row">
     <% @listings.each do |listing| %>
@@ -18,4 +18,4 @@
     <% end %>
   </div>
   
-<% end %>
+<%# end %>
