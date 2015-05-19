@@ -11,14 +11,9 @@
     <br>
     <div class="center">
       <form method="get" action="/listings/<%= params[:id] %>/orders/new">
-        <select name="compte_passager">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      <%#= link_to "Réserver un trajet", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
+        <% @test = @listing.nombre_passager - @listing.compte_passager %>
+        <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
+        <%= select_tag(:compte_passager, options_for_select(options_array)) %>
       <input type="submit" value="Réserver un trajet" class="btn btn-primary">
       </form>
     </div>

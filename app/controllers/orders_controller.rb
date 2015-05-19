@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @listing = Listing.friendly.find(params[:listing_id])
+    test = @listing.compte_passager
+    ret = test + params[:compte_passager].to_i
+    @listing.update_attribute(:compte_passager, ret)
     @seller = @listing.user
 
     @order.listing_id = @listing.id

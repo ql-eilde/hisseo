@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518154740) do
+ActiveRecord::Schema.define(version: 20150519135136) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150518154740) do
     t.string   "arrival"
     t.string   "date"
     t.integer  "nombre_passager"
-    t.integer  "compte_passager",    default: 1
+    t.integer  "compte_passager",    default: 0
   end
 
   add_index "listings", ["slug"], name: "index_listings_on_slug", unique: true
