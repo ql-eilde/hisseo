@@ -61,6 +61,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        UserMailer.new_sell(@order).deliver #envoi email au vendeur "nouvelle vente"
+        UserMailer.new_purchase(@order).deliver #envoi email acheteur "votre commande"
         format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @order }
       else

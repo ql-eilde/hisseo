@@ -22,11 +22,11 @@
   </div>
   <div class="form-group">
     <%= f.label :date, "Date de départ" %>
-    <%= f.date_select :date, {start_year: 2015}, class: "form-control" %>
+    <%= f.text_field :date, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :time, "Heure de départ" %>
-    <%= f.time_select :time, {minute_step: 5, include_seconds: false}, class: "form-control" %>
+    <%= f.text_field :time, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :nombre_passager, "Nombre de passagers acceptés" %>

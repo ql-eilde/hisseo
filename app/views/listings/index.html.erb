@@ -5,6 +5,7 @@
 
   <div class="row">
     <% @listings.each do |listing| %>
+      <% if listing.compte_passager != listing.nombre_passager %>
       <div class="col-md-3">
         <div class="thumbnail">
           <%= link_to image_tag(listing.image.url), listing %>
@@ -15,6 +16,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
   

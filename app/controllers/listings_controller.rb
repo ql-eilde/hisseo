@@ -11,8 +11,11 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if params[:departure]
+      #date = params[:date]
+      #print date
+      #realdate = Date.new date["(3i)"].to_i, date["(2i)"].to_i, date["(1i)"].to_i
       @test = "#{params[:departure].downcase}-#{params[:arrival].downcase}"
-      @listings = Listing.filter(@test, params[:date])
+      @listings = Listing.filter(@test, realdate.to_s)
     else
       @listings = Listing.all.order("created_at DESC")
     end
@@ -36,11 +39,15 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+    listing = params[:listing]
+    @listing.date = Date.new listing["date(1i)"].to_i, listing["date(2i)"].to_i, listing["date(3i)"].to_i
+    @listing.time = Time.new listing["time(1i)"].to_i, listing["time(2i)"].to_i, listing["time(3i)"].to_i, listing["time(4i)"].to_i, listing["time(5i)"].to_i
     @listing.user_id = current_user.id
     @listing.name = "#{listing_params[:departure]}-#{listing_params[:arrival]}"
 
     respond_to do |format|
       if @listing.save
+        UserMailer.new_listing(@listing).deliver
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -82,7 +89,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:departure, :arrival, :description, :price, :image, :date, :nombre_passager)
+      params.require(:listing).permit(:departure, :arrival, :description, :price, :image, :date, :time, :nombre_passager)
     end
 
     def check_user
