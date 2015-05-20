@@ -6,4 +6,4 @@ Date::DATE_FORMATS.merge!({:db => '%d/%m/%Y', :fr_format => '%d/%m/%Y'})
 Time::DATE_FORMATS[:default]= '%H:%M'
 
 # if you want to change the DB date format.
-Time::DATE_FORMATS.merge!({:db => '%H:%M', :fr_format => '%H:%M'})
+Time::DATE_FORMATS.merge!({:db => '%Y-%m-%d %H:%M:%S %z'})
