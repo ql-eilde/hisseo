@@ -7,6 +7,12 @@
   <%= javascript_include_tag "https://js.stripe.com/v2/" %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLISHABLE_KEY"] %>
+  <script>
+    $(function() {
+      $( ".datepicker" ).pickadate();
+      $( ".timepicker" ).pickatime();
+    });
+  </script>
 </head>
 <body>
 
@@ -16,17 +22,17 @@
 	<% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name.to_s == "notice" ? "success" : "info" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="info" aria-hidden="true">&times;</button>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       </div>
     <% end %>
   <% end %>
 
   <%= form_tag listings_path, method: "get" do %>
-    <input class="form-control" type="text" name="departure" id="departure" />
-    <input class="form-control" type="text" name="arrival" id="arrival" />
-    <%= date_select :date, nil, class: "form-control" %>
-  <%= submit_tag "Filter", name: nil %>
+    <input class="form-control" type="text" name="departure" id="departure" placeholder="De" />
+    <input class="form-control" type="text" name="arrival" id="arrival" placeholder="À" />
+    <input type="text" name="date" class="datepicker form-control" placeholder="Date" />
+    <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary" %>
   <% end %>
 
 	<%= yield %>

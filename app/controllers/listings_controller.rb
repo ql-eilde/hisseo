@@ -11,11 +11,8 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if params[:departure]
-      #date = params[:date]
-      #print date
-      #realdate = Date.new date["(3i)"].to_i, date["(2i)"].to_i, date["(1i)"].to_i
       @test = "#{params[:departure].downcase}-#{params[:arrival].downcase}"
-      @listings = Listing.filter(@test, realdate.to_s)
+      @listings = Listing.filter(@test, params[:date])
     else
       @listings = Listing.all.order("created_at DESC")
     end
@@ -39,16 +36,13 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-    listing = params[:listing]
-    @listing.date = Date.new listing["date(1i)"].to_i, listing["date(2i)"].to_i, listing["date(3i)"].to_i
-    @listing.time = Time.new listing["time(1i)"].to_i, listing["time(2i)"].to_i, listing["time(3i)"].to_i, listing["time(4i)"].to_i, listing["time(5i)"].to_i
     @listing.user_id = current_user.id
     @listing.name = "#{listing_params[:departure]}-#{listing_params[:arrival]}"
 
     respond_to do |format|
       if @listing.save
-        UserMailer.new_listing(@listing).deliver
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        #UserMailer.new_listing(@listing).deliver
+        format.html { redirect_to @listing, notice: "Félicitations ! Votre annonce vient d'être publiée. Vous allez recevoir un email avec les détails de celle-ci." }
         format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -62,7 +56,7 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing, notice: "Votre annonce vient d'être mise à jour." }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -76,7 +70,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_url, notice: "Votre annonce vient d'être détruite." }
       format.json { head :no_content }
     end
   end

@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
+//= require picker.js
+//= require picker.date.js
+//= require picker.time.js
 //= require_tree .
