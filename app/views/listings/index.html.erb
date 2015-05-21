@@ -19,5 +19,9 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="paginate">
+    <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+  </div>
   
 <%# end %>

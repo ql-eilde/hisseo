@@ -12,9 +12,9 @@ class ListingsController < ApplicationController
   def index
     if params[:departure]
       @test = "#{params[:departure]}-#{params[:arrival]}"
-      @listings = Listing.filter(@test, params[:date])
+      @listings = Listing.filter(@test, params[:date]).order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     else
-      @listings = Listing.all.order("created_at DESC")
+      @listings = Listing.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20)
     end
   end
 
