@@ -21,16 +21,16 @@
 <div class="container">
 	<% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
-      <div class="alert alert-<%= name.to_s == "notice" ? "success" : "info" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="info" aria-hidden="true">&times;</button>
+      <div class="alert alert-<%= name.to_s == "notice" ? "success" : "danger" %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       </div>
     <% end %>
   <% end %>
 
   <%= form_tag listings_path, method: "get" do %>
-    <input class="form-control" type="text" name="departure" id="departure" placeholder="De" />
-    <input class="form-control" type="text" name="arrival" id="arrival" placeholder="À" />
+    <input class="form-control" type="text" name="departure" id="search_address_departure" placeholder="De" />
+    <input class="form-control" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
     <input type="text" name="date" class="datepicker form-control" placeholder="Date" />
     <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary" %>
   <% end %>
@@ -39,6 +39,5 @@
 </div>
 
 <%= render "layouts/footer" %>
-
 </body>
 </html>

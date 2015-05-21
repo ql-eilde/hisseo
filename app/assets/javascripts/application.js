@@ -16,4 +16,6 @@
 //= require picker.js
 //= require picker.date.js
 //= require picker.time.js
+//= require google_places.js
+//= require autocomplete.js
 //= require_tree .

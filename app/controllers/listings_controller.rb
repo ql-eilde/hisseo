@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     if params[:departure]
-      @test = "#{params[:departure].downcase}-#{params[:arrival].downcase}"
+      @test = "#{params[:departure]}-#{params[:arrival]}"
       @listings = Listing.filter(@test, params[:date])
     else
       @listings = Listing.all.order("created_at DESC")
@@ -37,7 +37,9 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
-    @listing.name = "#{listing_params[:departure]}-#{listing_params[:arrival]}"
+    @listing.name = "#{listing_params[:departure].capitalize}-#{listing_params[:arrival].capitalize}"
+    length = 10
+    @listing.slug = "#{listing_params[:departure].downcase.parameterize}-#{listing_params[:arrival].downcase.parameterize}-#{rand(36**length).to_s(36)}"
 
     respond_to do |format|
       if @listing.save

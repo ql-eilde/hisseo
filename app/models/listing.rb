@@ -22,7 +22,7 @@ class Listing < ActiveRecord::Base
 
   def self.filter(filter1, filter2)
     if filter1
-      where(slug: filter1, date: filter2)
+      where(name: filter1, date: filter2)
     end
   end
 end
