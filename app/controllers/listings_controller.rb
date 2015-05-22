@@ -43,7 +43,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        #UserMailer.new_listing(@listing).deliver
+        #UserMailer.new_listing(@listing).deliver_now
         format.html { redirect_to @listing, notice: "Félicitations ! Votre annonce vient d'être publiée. Vous allez recevoir un email avec les détails de celle-ci." }
         format.json { render :show, status: :created, location: @listing }
       else
