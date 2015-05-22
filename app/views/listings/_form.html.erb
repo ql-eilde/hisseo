@@ -13,11 +13,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :departure, "Ville de départ" %>
+    <%= f.label :departure, "Ville d'embarquement" %>
     <%= f.text_field :departure, id: "address_departure", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :arrival, "Ville d'arrivée" %>
+    <%= f.label :arrival, "Ville de débarquement" %>
     <%= f.text_field :arrival, id: "address_arrival", class: "form-control" %>
   </div>
   <div class="form-group">
@@ -29,18 +29,47 @@
     <input type="text" name="listing[time]" class="timepicker">
   </div>
   <div class="form-group">
-    <%= f.label :nombre_passager, "Nombre de passagers acceptés" %>
-    <%= f.text_field :nombre_passager, class: "form-control" %>
+    <%= f.label :nombre_passager, "Nombre de places" %>
+    <select name="listing[nombre_passager]" id="nombre_passager">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option selected="selected">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
   </div>
   <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+    <%= f.label :description, "Vous pouvez donner içi des informations complémentaires concernant votre trajet. Cela vous évitera beaucoup de questions de vos passagers." %>
+    <%= f.text_area :description, placeholder: "(durée, précision sur l'embarquement ou le débarquement, précisions diverses, ...)", class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :price %>
+    <%= f.label :type_bateau, "Type de bateau" %>
+    <select name="listing[type_bateau]" id="type_bateau">
+      <option value="Vedette">Vedette</option>
+      <option value="Zodiac">Zodiac</option>
+      <option value="Voilier">Voilier</option>
+      <option value="Autre">Autre</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :bagages, "Bagages autorisés" %>
+    <select name="listing[bagages]" id="bagages">
+      <option value="Petites tailles">Petites tailles</option>
+      <option selected="selected">Moyennes tailles</option>
+      <option value="Grandes tailles">Grandes tailles</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "Prix" %>
     <%= f.text_field :price, class: "form-control" %>
   </div>
   <div class="form-group">
+    <%= f.label :image, "Images de votre bateau" %>
     <%= f.file_field :image, class: "form-control" %>
   </div>
   <div class="form-group">

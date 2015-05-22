@@ -13,7 +13,7 @@ class Listing < ActiveRecord::Base
 
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  validates :departure, :arrival, :description, :price, :date, :time, :nombre_passager, presence: true
+  validates :departure, :arrival, :description, :price, :date, :time, :nombre_passager, :type_bateau, :bagages, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates_attachment_presence :image
 
