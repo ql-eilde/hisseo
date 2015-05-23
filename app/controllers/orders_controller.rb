@@ -55,14 +55,14 @@ class OrdersController < ApplicationController
         :currency => "EUR",
         :card => token
         )
-      flash[:notice] = "Merci pour votre réservation !"
+      flash[:notice] = "À l'abordage ! Vous venez de recevoir un email avec les détails de votre réservation."
     rescue
       flash[:info] = e.message
     end
 
     respond_to do |format|
       if @order.save
-        #UserMailer.new_sell(@order).deliver_now #envoi email au vendeur "nouvelle vente"
+        UserMailer.new_sell(@order).deliver_now #envoi email au vendeur "nouvelle vente"
         UserMailer.new_purchase(@order).deliver_now #envoi email acheteur "votre commande"
         format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @order }

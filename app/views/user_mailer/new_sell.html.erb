@@ -1,0 +1,96 @@
+<div style="background:#e0eff3;color:#6c7581;font-family:'Lato',sans-serif;font-size:100%;font-style:normal;font-weight:normal;min-height:100%;line-height:1;margin:0px;padding:0px;width:100%!important" bgcolor="#E0EFF3">
+	<center>
+		<table style="background:#e0eff3;border-spacing:0;border:0;margin:0px;padding:0px" bgcolor="#E0EFF3" width="100%" height="100%">
+			<tbody>
+				<tr>
+					<td align="center" valign="top" style="padding:0px">
+						<table style="border-spacing:0;border:0;width:600px">
+							<tbody>
+								<tr>
+									<td style="padding:20px 0px;text-align:center" align="center">
+										<a href="http://localhost:3000" target="_blank">HISSEO-LOGO</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#0077b3;border-radius:3px 3px 0px 0px;color:#ffffff;padding:20px 30px" bgcolor="#0077b3">
+										<b>Nouvelle réservation sur Hisseo</b>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;color:#6c7581;font-family:Arial;font-size:14px;line-height:150%;padding:20px 30px;text-align:left" bgcolor="#FFFFFF">
+										<p>Bonjour <%= @order.seller.first_name.capitalize %>,</p>
+										<p>Félicitations -- vous avez une nouvelle réservation.</p>
+										<p>Vous trouverez ci-dessous les détails de celle-ci.</p>
+										<table width="100%" cellspacing="0" cellpadding="12" border="0" bgcolor="#F5F5F5" style="color:#555555;border:1px solid #cccccc;border-radius:4px">
+											<tbody>
+												<tr>
+													<td>
+														<table align="left" width="100%" cellspacing="0" cellpadding="10" border="0" style="font-size:90%">
+															<tbody>
+																<tr>
+																	<td style="background:#e1e1e1;color:#555555;font-size:100%" align="left" colspan="2"><strong>Votre futur matelot</strong></td>
+																</tr>
+																<tr>
+																	<td height="1" colspan="2"></td>
+																</tr>
+																<tr>
+																	<td align="left" width="120" style="border-bottom:1px solid #e3e0e0;padding-top:0">Prénom</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;padding-top:0"><b><%= @order.buyer.first_name.capitalize %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Numéro de téléphone</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.buyer.tel_number %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Nombre de place(s) réservée(s)</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.nb_places %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-top:1px solid #ffffff">Ce qui vous revient</td>
+																	<td align="left" style="border-top:1px solid #ffffff"><b><% ret = @order.listing.price * @order.nb_places %><%= ret %> €</b></td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<p></p>
+										<p>Vous pouvez dès à présent contacter votre futur matelot pour convenir des derniers détails du trajet.</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;border-radius:0px 0px 3px 3px;padding:0px 0px 20px;text-align:center" align="center" bgcolor="#FFFFFF">
+										LOGO
+									</td>
+								</tr>
+								<tr>
+									<td valign="top" style="color:#7099a0;font-size:12px;padding:20px 0px;text-align:center" align="center">
+										<table border="0" cellpadding="10" cellspacing="0" width="100%" style="border-spacing:0;border:0">
+											<tbody>
+												<tr>
+													<td valign="top" style="padding:0px">
+														<div>
+															<a href="https://twitter.com" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Suivez-nous sur Facebook</a>
+															 | 
+															<a href="http://localhost:3000" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Contactez notre équipe de support</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:0px">
+										<div></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</div>

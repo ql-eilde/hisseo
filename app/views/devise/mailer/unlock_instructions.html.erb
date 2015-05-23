@@ -1,7 +1,64 @@
-<p>Hello <%= @resource.email %>!</p>
+<div style="background:#e0eff3;color:#6c7581;font-family:'Lato',sans-serif;font-size:100%;font-style:normal;font-weight:normal;min-height:100%;line-height:1;margin:0px;padding:0px;width:100%!important" bgcolor="#E0EFF3">
+	<center>
+		<table style="background:#e0eff3;border-spacing:0;border:0;margin:0px;padding:0px" bgcolor="#E0EFF3" width="100%" height="100%">
+			<tbody>
+				<tr>
+					<td align="center" valign="top" style="padding:0px">
+						<table style="border-spacing:0;border:0;width:600px">
+							<tbody>
+								<tr>
+									<td style="padding:20px 0px;text-align:center" align="center">
+										<a href="http://localhost:3000" target="_blank">HISSEO-LOGO</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#0077b3;border-radius:3px 3px 0px 0px;color:#ffffff;padding:20px 30px" bgcolor="#0077b3">
+										<b>Débloquez votre compte</b>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;color:#6c7581;font-family:Arial;font-size:14px;line-height:150%;padding:20px 30px;text-align:left" bgcolor="#FFFFFF">
+										<p>Bonjour <%= @resource.first_name.capitalize %>,</p>
+										<p>Votre compte à été bloquée suite à un nombre excessif de tentatives de connexions.</p>
+										<p>Cliquez sur le lien ci-dessous pour débloquer votre compte :</p>
+										<div style="padding:10px 0px;text-align:center" align="center">
+											<%= link_to "Débloquer mon compte", unlock_url(@resource, unlock_token: @token), style: "background:#00bbc2 linear-gradient(#00c5cc,#00bbc2) no-repeat;border-radius:3px;border:1px solid #009ea3;color:#fff;display:inline-block;font-family:'Lato',sans-serif;font-size:0.9375rem;font-weight:bold;letter-spacing:0.05em;line-height:normal;margin:0px;padding:0.75rem 3.1875rem 0.8125rem;text-align:center;text-decoration:none", target: "_blank" %>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;border-radius:0px 0px 3px 3px;padding:0px 0px 20px;text-align:center" align="center" bgcolor="#FFFFFF">
+										LOGO
+									</td>
+								</tr>
+								<tr>
+									<td valign="top" style="color:#7099a0;font-size:12px;padding:20px 0px;text-align:center" align="center">
+										<table border="0" cellpadding="10" cellspacing="0" width="100%" style="border-spacing:0;border:0">
+											<tbody>
+												<tr>
+													<td valign="top" style="padding:0px">
+														<div>
+															<a href="https://twitter.com" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Suivez-nous sur Facebook</a>
+															 | 
+															<a href="http://localhost:3000" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Contactez notre équipe de support</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:0px">
+										<div></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</div>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
-
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>

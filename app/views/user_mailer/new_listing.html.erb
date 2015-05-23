@@ -13,13 +13,79 @@
 								</tr>
 								<tr>
 									<td style="background:#0077b3;border-radius:3px 3px 0px 0px;color:#ffffff;padding:20px 30px" bgcolor="#0077b3">
-										<b>Bienvenue sur Hisseo</b>
+										<b>Votre annonce sur Hisseo</b>
 									</td>
 								</tr>
 								<tr>
 									<td style="background:#ffffff;color:#6c7581;font-family:Arial;font-size:14px;line-height:150%;padding:20px 30px;text-align:left" bgcolor="#FFFFFF">
 										<p>Bonjour <%= @listing.user.first_name.capitalize %>,</p>
-										<p>Félicitations -- vous êtes à partir d'aujourd'hui un membre du club Hisseo.</p>
+										<p>Félicitations -- vous venez de publier une nouvelle annonce.</p>
+										<p>Vous trouverez ci-dessous les détails de celle-ci.</p>
+										<table width="100%" cellspacing="0" cellpadding="12" border="0" bgcolor="#F5F5F5" style="color:#555555;border:1px solid #cccccc;border-radius:4px">
+											<tbody>
+												<tr>
+													<td>
+														<table align="left" width="100%" cellspacing="0" cellpadding="10" border="0" style="font-size:90%">
+															<tbody>
+																<tr>
+																	<td style="background:#e1e1e1;color:#555555;font-size:100%" align="left" colspan="2"><strong>Détails de l'annonce</strong></td>
+																</tr>
+																<tr>
+																	<td height="1" colspan="2"></td>
+																</tr>
+																<tr>
+																	<td align="left" width="120" style="border-bottom:1px solid #e3e0e0;padding-top:0">Départ</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;padding-top:0"><b><%= @listing.departure %>, France</b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Arrivée</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.arrival %>, France</b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Date</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.date %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Heure</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.time %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Nb de place(s)</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.nombre_passager %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Type de bateau</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.type_bateau %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Taille des bagages</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.bagages %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-top:1px solid #ffffff">Prix par place</td>
+																	<td align="left" style="border-top:1px solid #ffffff"><b><%= @listing.price %> €</b></td>
+																</tr>
+																<tr>
+																	<td colspan="2">
+																		<table cellpadding="10" cellspacing="0" border="0" width="100%" style="background-color:#e8f5fd;border-radius:4px;border:1px solid #e6e6e6" bgcolor="#eBf5fd">
+																			<tbody>
+																				<tr>
+																					<td align="left" style="font-family:Georgia,Times,sans-serif;font-size:72px;color:#75cffc">“</td>
+																					<td style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.4" rowspan="3"><%= @listing.description %></td>
+																					<td align="right" style="font-family:Georgia,Times,sans-serif;font-size:72px;color:#75cffc;vertical-align:bottom">”</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<p></p>
+										<p>Pensez dès à présent à renseigner votre numéro de téléphone dans <%= link_to " votre profil", "http://localhost:3000/users/edit" %> si ce n'ai pas déjà fait.</p>
 									</td>
 								</tr>
 								<tr>
