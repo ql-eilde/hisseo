@@ -1,0 +1,238 @@
+<div style="background:#e0eff3;color:#6c7581;font-family:'Lato',sans-serif;font-size:100%;font-style:normal;font-weight:normal;min-height:100%;line-height:1;margin:0px;padding:0px;width:100%!important" bgcolor="#E0EFF3">
+	<center>
+		<table style="background:#e0eff3;border-spacing:0;border:0;margin:0px;padding:0px" bgcolor="#E0EFF3" width="100%" height="100%">
+			<tbody>
+				<tr>
+					<td align="center" valign="top" style="padding:0px">
+						<table style="border-spacing:0;border:0;width:600px">
+							<tbody>
+								<tr>
+									<td style="padding:20px 0px;text-align:center" align="center">
+										<a href="http://localhost:3000" target="_blank">HISSEO-LOGO</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#0077b3;border-radius:3px 3px 0px 0px;color:#ffffff;padding:20px 30px" bgcolor="#0077b3">
+										<b>Votre réservation sur hisseo</b>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;color:#6c7581;font-family:Arial;font-size:14px;line-height:150%;padding:20px 30px;text-align:left" bgcolor="#FFFFFF">
+										<p>Bonjour <%= @order.buyer.first_name.capitalize %>,</p>
+										<p>Félicitations -- vous venez d'effectuer une nouvelle réservation.</p>
+										<p>Vous trouverez ci-dessous les détails de celle-ci.</p>
+										<table width="100%" cellspacing="0" cellpadding="12" border="0" bgcolor="#F5F5F5" style="color:#555555;border:1px solid #cccccc;border-radius:4px">
+											<tbody>
+												<tr>
+													<td>
+														<table align="left" width="100%" cellspacing="0" cellpadding="10" border="0" style="font-size:90%">
+															<tbody>
+																<tr>
+																	<td style="background:#e1e1e1;color:#555555;font-size:100%" align="left" colspan="2"><strong>Détails du trajet</strong></td>
+																</tr>
+																<tr>
+																	<td height="1" colspan="2"></td>
+																</tr>
+																<tr>
+																	<td align="left" width="120" style="border-bottom:1px solid #e3e0e0;padding-top:0">Départ</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;padding-top:0"><b><%= @order.listing.departure %>, France</b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Arrivée</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.listing.arrival %>, France</b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Date</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.listing.date %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Heure</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.listing.time %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Nb de place(s)</td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @order.nb_places %></b></td>
+																</tr>
+																<tr>
+																	<td align="left" style="border-top:1px solid #ffffff">Prix total</td>
+																	<td align="left" style="border-top:1px solid #ffffff"><b><%= @order.listing.price %> €</b></td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<p></p>
+										<table cellpadding="0" cellspacing="0" border="0" width="100%">
+											<tbody>
+												<tr>
+													<td>
+														<table cellpadding="0" cellspacing="0" border="0" width="49%" align="left">
+															<tbody>
+																<tr>
+																	<td>
+																		<table cellpadding="12" cellspacing="0" border="0" width="100%" style="width:100%!important">
+																			<tbody>
+																				<tr>
+																					<td bgcolor="#ebeaeb" align="left" style="font-size:110%">Votre capitaine</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td height="6"></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="12" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td>
+																						<table cellpadding="0" cellspacing="0" border="0" width="100%" style="color:#555555">
+																							<tbody>
+																								<tr>
+																									<td align="left">
+																										<table cellpadding="0" cellspacing="4" border="0" width="100%">
+																											<tbody>
+																												<tr>
+																													<td align="left" valign="top" width="20">
+																														<strong>
+																															<%= @order.seller.first_name %> <%= @order.seller.last_name.first %>
+																														</strong>
+																													</td>
+																												</tr>
+																												<tr>
+																													<td height="18">
+																														<strong style="color:#3ab2fa">
+																															<%= @order.seller.tel_number %>
+																														</strong>
+																													</td>
+																												</tr>
+																											</tbody>
+																										</table>
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td height="12"></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table cellpadding="0" cellspacing="0" border="0" width="49%" align="right">
+															<tbody>
+																<tr>
+																	<td>
+																		<table cellpadding="12" cellspacing="0" border="0" width="100%" style="width:100%!important">
+																			<tbody>
+																				<tr>
+																					<td bgcolor="#ebeaeb" align="left" style="font-size:110%">Le bateau</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td height="6"></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="12" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td>
+																						<table cellpadding="0" cellspacing="0" border="0" width="100%" style="color:#555555">
+																							<tbody>
+																								<tr>
+																									<td align="left">
+																										<table cellpadding="0" cellspacing="4" border="0" width="100%">
+																											<tbody>
+																												<tr>
+																													<td align="left" valign="top" width="20">
+																														<strong>
+																															Type : <%= @order.listing.type_bateau %>
+																														</strong>
+																													</td>
+																												</tr>
+																												<tr>
+																													<td height="18">
+																														<strong>
+																															Bagages : <%= @order.listing.bagages %>
+																														</strong>
+																													</td>
+																												</tr>
+																											</tbody>
+																										</table>
+																									</td>
+																								</tr>
+																							</tbody>
+																						</table>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+																			<tbody>
+																				<tr>
+																					<td height="12"></td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<p>Vous pouvez désomais contacter le capitaine pour convenir des derniers détails du trajet.</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="background:#ffffff;border-radius:0px 0px 3px 3px;padding:0px 0px 20px;text-align:center" align="center" bgcolor="#FFFFFF">
+										LOGO
+									</td>
+								</tr>
+								<tr>
+									<td valign="top" style="color:#7099a0;font-size:12px;padding:20px 0px;text-align:center" align="center">
+										<table border="0" cellpadding="10" cellspacing="0" width="100%" style="border-spacing:0;border:0">
+											<tbody>
+												<tr>
+													<td valign="top" style="padding:0px">
+														<div>
+															<a href="https://twitter.com" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Suivez-nous sur Facebook</a>
+															 | 
+															<a href="http://localhost:3000" style="color:#7099a0;font-weight:bold;text-decoration:none" target="_blank">Contactez notre équipe de support</a>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:0px">
+										<div></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
+</div>

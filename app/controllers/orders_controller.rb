@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
     @order.listing_id = @listing.id
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
+    @order.nb_places = params[:compte_passager].to_i
 
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
     token = params[:stripeToken]
@@ -62,7 +63,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         #UserMailer.new_sell(@order).deliver_now #envoi email au vendeur "nouvelle vente"
-        #UserMailer.new_purchase(@order).deliver_now #envoi email acheteur "votre commande"
+        UserMailer.new_purchase(@order).deliver_now #envoi email acheteur "votre commande"
         format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @order }
       else
