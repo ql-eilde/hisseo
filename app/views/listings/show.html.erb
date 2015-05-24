@@ -17,7 +17,7 @@
       <form method="get" action="/listings/<%= params[:id] %>/orders/new">
         <% @test = @listing.nombre_passager - @listing.compte_passager %>
         <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
-        <%= select_tag(:compte_passager, options_for_select(options_array)) %>
+        <%= select_tag(:compte_passager, options_for_select(options_array), class: "form-control") %>
       <input type="submit" value="Réserver un trajet" class="btn btn-primary">
       </form>
     </div>

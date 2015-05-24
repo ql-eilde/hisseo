@@ -11,7 +11,7 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
-	<a class="navbar-brand" href="/">Hisseo</a>
+	<a class="navbar-brand brand-hisseo" href="/">Hisseo</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,7 @@
             <li class="divider"></li>
             <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
           </ul>
-          <li><%= link_to new_listing_path, class: "", data: { no_turbolink: true } do %>
+          <li class="nav-sell"><%= link_to new_listing_path, data: { no_turbolink: true } do %>
             <i class="glyphicon glyphicon-plus"></i> PROPOSER UN TRAJET
           <% end %>
           </li>
@@ -37,7 +37,7 @@
       <% else %>
         <li><%= link_to "Connexion", "#login", data: {toggle: "modal"} %></li>
         <li><%= link_to "Inscription", "#signup", data: {toggle: "modal"} %></li>
-        <li><%= link_to new_listing_path, class: "", data: { no_turbolink: true } do %>
+        <li class="nav-sell"><%= link_to new_listing_path, data: { no_turbolink: true } do %>
           <i class="glyphicon glyphicon-plus"></i> PROPOSER UN TRAJET
         <% end %>
         </li>

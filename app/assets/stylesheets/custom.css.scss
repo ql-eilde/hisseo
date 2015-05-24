@@ -2,3 +2,199 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+body {
+	background-color: #f5f7fa;
+	color: #333333;
+	font-family: 'PT Sans', Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+.site {
+	display: flex;
+  	min-height: 100vh;
+  	flex-direction: column;
+}
+
+.site-content {
+  	flex: 1;
+  	margin-top: 50px;
+  	margin-bottom: 50px;
+}
+
+/* HEADER INDEX */
+
+.navbar-hisseo {
+	position: absolute;
+    top: 20px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    z-index: 100;
+}
+
+.navbar-default {
+	background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	color: #1F1F1F;
+	font-size: 30px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	font-family: 'PT Sans', Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #FF8F22;
+}
+
+.navbar-default .navbar-nav .sign-index > a {
+	color: white;
+}
+
+.navbar-default .navbar-nav .sign-index > a:hover {
+	color: #00c0c7;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-toggle-index {
+	color: white;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-toggle-index:hover {
+	color: #D27900;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-toggle:hover {
+	color: #D27900;
+}
+
+.navbar-default .navbar-nav .sell > a {
+	border: 3px solid #00c5cc; 
+	background-color:#00c5cc;
+	border-radius: 4px;
+	height: 34px; 
+	margin-right: 10px; 
+	margin-left: 10px; 
+	margin-top: 7px; 
+	padding: 4px 10px;
+	color: white;
+}
+
+.navbar-default .navbar-nav .sell > a:hover {
+	background-color: #00c0c7;
+	border-color: #00c0c7;
+	color: white;
+}
+
+.container-fluid {
+	width: 100%;
+}
+
+#pretzel-image {
+	bottom: 0;
+	position: relative;
+	width: 100%;
+}
+
+#hero {
+	z-index: -1;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+
+#hero-wrapper {
+	margin-top: -20px;
+	position: relative;
+	height: 600px;
+}
+
+#catch-header {
+ 	padding-top:150px;
+ }
+
+ #join-us {
+ 	color: white;
+ 	text-align: center;
+ 	width:1100px;
+ 	margin:auto;
+ 	opacity:0.95;
+ 	padding:5px 4px 20px 4px;
+ 	border-radius:5px;
+ 	h1 {
+ 		text-transform:uppercase;
+ 		font-family: 'PT Sans', Arial, sans-serif;
+ 		font-size: 60px;
+ 		font-weight: bold;
+ 		text-shadow: 3px 2px #34373D;
+ 	}
+ 	h2 {
+ 		font-size: 25px;
+ 		font-family: 'PT Sans', Arial, sans-serif;
+ 		text-shadow: 2px 1px #34373D;
+ 	}
+ }
+
+ #join-facebook {
+ 	padding-top: 3px;
+ 	font-size: 22px;
+ 	padding-right:50px;
+ }
+
+ #search-bar {
+ }
+ 
+ /* FOOTER */
+
+ .footer-wrapper {
+    width: 100%;
+    padding: 28px 0;
+    color: #9d9d9d;
+    background: #E0EFF3;
+    box-sizing: border-box;
+    height: 375px;
+    margin-bottom: -1.42857em;
+    bottom: 0;
+ }
+
+ .footer {
+    width: 960px;
+    margin: auto;
+ }
+
+ .share-links {
+ 	padding-top: 5px;
+ }
+
+ .footer-divider {
+ 	border-color: rgba(255,255,255,0.2);
+ 	margin-top: 30px;
+ }
+
+ .footer a {
+ 	text-transform: none;
+ 	text-decoration: none;
+ 	color: #67757c;
+ }
+
+ .footer a:hover {
+ 	color: #000;
+ }
+
+ .footer a.social {
+ 	display: inline-block;
+ 	height: 32px;
+ 	width: 32px;
+ 	font-size: 1.71429em;
+ 	text-align: center;
+ 	text-decoration: none;
+ }

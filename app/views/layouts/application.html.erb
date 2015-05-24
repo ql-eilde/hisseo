@@ -15,11 +15,15 @@
     });
   </script>
 </head>
-<body>
+<body class="site">
 
-<%= render "layouts/header" %>
+  <% if request.url() == root_url %>
+    <%= render 'layouts/headerindex' %>
+  <% else %>
+    <%= render 'layouts/header' %>
+  <% end %>
 
-<div class="container">
+<div class="container site-content">
 	<% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name.to_s == "notice" ? "success" : "danger" %> alert-dismissable">
