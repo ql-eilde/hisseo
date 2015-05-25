@@ -57,7 +57,7 @@
   <div id="catch-header">
     <div id="join-us">
       <h1>Découvrez les îles, autrement</h1>
-      <h2>Prenez le large avec Hisseo.</h2>
+      <h2>Prenez le large, en cobaturage !</h2>
       <% if !user_signed_in? %>
         <%= link_to "/users/auth/facebook", class: "btn btn-primary", style: "margin-top:20px;margin-bottom:10px;" do %>
           <i class="fa fa-facebook-official fa-2x" style="float:left;margin-right:20px;margin-top:4px;"></i>
@@ -66,8 +66,13 @@
       <% end %>
     </div>
     <div id="search-bar">
-      <div class="search-form" style="width:40%;margin:auto;">
-
+      <div class="search-form">
+        <%= form_tag listings_path, method: "get" do %>
+          <input class="form-control search-box" type="text" name="departure" id="search_address_departure" placeholder="De" autofocus="true" />
+          <input class="form-control search-box" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
+          <input type="text" name="date" class="datepicker form-control search-date-box" placeholder="Date" />
+        <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary", style: "overflow:hidden" %>
+        <% end %>
       </div>
     </div>
   </div>
