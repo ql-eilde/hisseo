@@ -33,8 +33,23 @@ body {
     z-index: 100;
 }
 
+.navbar-hisseo2 {
+	border:0px;
+	border-bottom:5px solid #00c5cc;
+}
+
+.navbar-right-hisseo {
+	background-color:#f5f7fa;
+	border-left:1px solid #dedede;
+}
+
 .navbar-default {
 	background-color: #FFFFFF;
+}
+
+.header-hisseo2 {
+	background-color:#0077b3;
+	width:175px;
 }
 
 .navbar-default .navbar-brand {
@@ -51,7 +66,7 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-	color: #FF8F22;
+	color: #00c0c7;
 }
 
 .navbar-default .navbar-nav .sign-index > a {
@@ -63,15 +78,23 @@ body {
 }
 
 .navbar-default .navbar-nav .dropdown .dropdown-toggle-index {
-	color: white;
+	color: #fff;
 }
 
 .navbar-default .navbar-nav .dropdown .dropdown-toggle-index:hover {
-	color: #D27900;
+	color: #00c0c7;
 }
 
 .navbar-default .navbar-nav .dropdown .dropdown-toggle:hover {
-	color: #D27900;
+	color: #00c0c7;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-toggle-index2 {
+	color: #777;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-toggle-index2:hover {
+	color: #00c0c7;
 }
 
 .navbar-default .navbar-nav .sell > a {
@@ -171,6 +194,22 @@ body {
  	width: 200px;
  	float: left;
  	margin-right: 15px;
+ }
+
+ .search-box2 {
+ 	float: left;
+ }
+
+ .form-search {
+ 	width: 200px;
+ 	padding: 25px 12px;
+ 	border: 0px;
+ }
+
+ .form-search-submit {
+    width: 100px;
+    padding: 14px 12px;
+    border-radius: 0px;
  }
  
  /* FOOTER */

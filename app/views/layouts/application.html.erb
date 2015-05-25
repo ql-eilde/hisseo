@@ -33,13 +33,6 @@
     <% end %>
   <% end %>
 
-  <%= form_tag listings_path, method: "get" do %>
-    <input class="form-control" type="text" name="departure" id="search_address_departure" placeholder="De" />
-    <input class="form-control" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
-    <input type="text" name="date" class="datepicker form-control" placeholder="Date" />
-    <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary" %>
-  <% end %>
-
 	<%= yield %>
 </div>
 
