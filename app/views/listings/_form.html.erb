@@ -34,7 +34,7 @@
   </div>
   <div class="form-group">
     <%= f.label :description, "Vous pouvez donner içi des informations complémentaires concernant votre trajet. Cela vous évitera beaucoup de questions de vos passagers." %>
-    <%= f.text_area :description, placeholder: "(durée, précision sur l'embarquement ou le débarquement, précisions diverses, ...)", class: "form-control" %>
+    <%= f.text_area :description, placeholder: "(durée, précision sur l'embarquement ou le débarquement, description de votre bateau, est-ce que vous proposez des activités ...)", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :type_bateau, "Type de bateau" %>
@@ -54,9 +54,9 @@
     </select>
   </div>
   <div class="form-group">
-    <%= f.label :price, "Prix par place" %> (prix généralement proposé : 24 €)
+    <%= f.label :price, "Prix par place" %> (prix généralement proposé : 29 €)
     <div class="input-group">
-      <%= f.number_field :price, {value: '24', min: '15', max: '100', step: '1', class: "form-control"} %><span class="input-group-addon">€</span>
+      <%= f.number_field :price, {value: '29', min: '15', max: '100', step: '1', class: "form-control"} %><span class="input-group-addon">€</span>
     </div>
   </div>
   <div class="form-group">

@@ -1,20 +1,33 @@
-<div class="row">
-  <% @listings.each do |listing| %>
-    <% if listing.compte_passager != listing.nombre_passager %>
-    <div class="col-md-3">
-      <div class="thumbnail">
-        <%= link_to image_tag(listing.image.url), listing %>
-        <div class="caption">
-          <h3><%= link_to "#{listing.name}", listing %></h3>
-          <p><%= listing.price %> <%= t('euro') %></p>
-          <p><%= "Proposé par #{listing.user.first_name}" %></p>
+<% if request.url() == root_url %>
+  <h3 class="h3-title-index">Notre flotte vous attends</h3>
+  <div class="row">
+    <% @listings.each do |listing| %>
+      <% listing_url = "/listings/#{listing.id}" %>
+      <% if listing.compte_passager != listing.nombre_passager %>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a class="boat-listing" href="<%= listing_url %>" target="_blank">
+              <div class="listing-image" style="background-image:url('<%= listing.image.url %>')">
+                <div class="owner" style="background-image:url('<%= listing.user.profile_img %>')"></div>
+                <div class="price"><%= number_to_currency(listing.price) %></div>
+              </div>
+              <div class="caption">
+                <ul class="tags">
+                  <li><%= "Proposé par #{listing.user.first_name}" %></li>
+                </ul>
+                <div class="listing-title"><%= listing.departure %> <em>→</em> <%= listing.arrival %></div>
+                <div class="listing-date"><%= l listing.date.to_date, :format => :long %> à <%= listing.time %></div>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div class="paginate">
-  <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
-</div>
+  <div class="paginate">
+    <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
+  </div>
+<% else %>
+  <p>Page de résultat de recherche</p>
+<% end %>

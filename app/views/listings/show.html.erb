@@ -1,44 +1,115 @@
-<div class="row">
-  <div class="col-md-6">
-    <section class="gallery">
+<section class="show-header">
+  <div class="product-header">
+    <h1 class="product-title"><%= @listing.departure %> <em>→</em> <%= @listing.arrival %></h1>
+    <div class="horizontal-nav-header">
+      <ul class="muted">
+        <li class="addby">Ajouté par <%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</li>
+      </ul>
+    </div>
+    <div class="show-date">
+      <p class="content-date"><%= l @listing.date.to_date, :format => :long %> à <%= l @listing.time.to_time, :format => :short %></p>
+    </div>
+  </div>
+</section>
+<div class="col-md-8" style="margin-bottom:38px;">
+  <section class="gallery">
     <div class="fotorama" data-width="100%" data-nav="thumbs" data-allowfullscreen="true" data-loop="true" data-arrows="true">
       <%= image_tag @listing.image.url %>
       <%= image_tag @listing.image.url %>
       <%= image_tag @listing.image.url %>
     </div>
   </section>
-  </div>
-  <div class="col-md-6">
-    <h3><%= @listing.name %></h3>
-    <p><%= @listing.price %> <%= t('euro') %></p>
-    <p><%= @listing.description %></p>
-    <br>
-    <div class="center">
-      <form method="get" action="/listings/<%= params[:id] %>/orders/new">
-        <% @test = @listing.nombre_passager - @listing.compte_passager %>
-        <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
-        <%= select_tag(:compte_passager, options_for_select(options_array), class: "form-control") %>
-      <input type="submit" value="Réserver un trajet" class="btn btn-primary">
-      </form>
+  <div class="description-section">
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+        <section>
+          <div class="description">
+            <%= simple_format(@listing.description) %>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
 </div>
+<div class="col-md-4">
+  <div class="product-sidebar">
+    <div class="buy-module">
+      <p class="product-price">
+        <span class="show-price"><%= number_to_currency(@listing.price) %></span>
+      </p>
+      <div class="btn btn-primary cartitem" style="margin-bottom:0;">
+        <span class="fa fa-credit-card"> </span>
+        <%= link_to "Réserver en ligne", new_listing_order_path(@listing), style: "color:white;text-decoration:none;", data: { no_turbolinks: true } %>
+      </div>
+    </div>
+    <div class="seller-module">
+      <div class="top-seller-module">
+        <h4>Votre capitaine</h4>
+      </div>
+      <div class="body-seller-module">
+        <div class="about-seller">
+          <ul>
+            <li class="strong"><%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</li>
+            <li class="small">
+              <p>Membre depuis le <%= l @listing.user.created_at.to_date, :format => :short %></p>
+            </li>
+          </ul>
+        </div>
 
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'hisseo';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary contact" data-toggle="modal" data-target="#myModal">
+          <span class="fa fa-comment-o"></span> Contacter le vendeur
+        </button>
 
-<% if current_user == @listing.user %>
-  <%= link_to 'Modifier', edit_listing_path(@listing), class: "btn btn-link" %> |
-<% end %>
-<%= link_to 'Retour', listings_path, class: "btn btn-link" %>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">Contacter le vendeur</h3>
+              </div>
+              <div class="modal-body">
+                <h4>Poser une question a <%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</h4><br>
+                <%#= form_for ([@listing, Contact.new]), :html => {:class => 'form-horizontal'} do |f| %>
+                <div class="field form-group" style="padding:0 30px;">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%#= f.label :name, "Votre nom complet" %>
+                      <%#= f.text_field :name, :required => true, class: "form-control" %>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%#= f.label :email, "Votre adresse email" %>
+                      <%#= f.text_field :email, :required => true, class: "form-control" %>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <%#= f.label :message, "Votre message" %>
+                      <%#= f.text_area :message, :as => :text, :required => true, class: "form-control" %>
+                    </div>
+                  </div>
+                </div>
+                <div class= "hidden">
+                  <%#= f.text_field :dest_email, value: @listing.user.email %>
+                  <%#= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%#= f.submit 'Envoyer le message', class: "btn btn-primary" %>
+              </div>
+              <%# end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

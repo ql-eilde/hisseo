@@ -81,8 +81,7 @@
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
           <div class="form-group">
-            <%= f.check_box :cgu, value: "yes" %>
-            <%= f.label :cgu, "J'ai lu et j'accepte les " %><%= link_to " conditions générales d'utilisation", "/" %>
+            <p>En vous inscrivant, vous accepetez nos <a href="/">conditions générales d'utilisation.</a></p>
           </div><br />
           <%= recaptcha_tags %>
           <div class="form-group">

@@ -27,17 +27,17 @@ fr:
     - nov.
     - déc.
     day_names:
-    - dimanche
-    - lundi
-    - mardi
-    - mercredi
-    - jeudi
-    - vendredi
-    - samedi
+    - Dimanche
+    - Lundi
+    - Mardi
+    - Mercredi
+    - Jeudi
+    - Vendredi
+    - Samedi
     formats:
       default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
+      short: "%e %b %Y"
+      long: "%A %e %B"
     month_names:
     - 
     - janvier
@@ -206,5 +206,5 @@ fr:
     formats:
       default: "%d %B %Y %Hh %Mmin %Ss"
       long: "%A %d %B %Y %Hh%M"
-      short: "%d %b %Hh%M"
+      short: "%Hh%M"
     pm: pm
