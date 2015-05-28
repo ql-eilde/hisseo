@@ -1,19 +1,38 @@
-<div class="center">
-  <div class="row">
-    <% @listings.each do |listing| %>
-      <div class="col-md-3">
+<div class="row">
+  <% @listings.each do |listing| %>
+
+    <%  profile_img = listing.user.profile_img_file_name
+        facebook_img = listing.user.facebook_img
+
+        if  profile_img.nil? && facebook_img.nil?
+            image = "/assets/default_profile.png"
+        else
+            if  !facebook_img.nil?
+                image = facebook_img
+            else
+                image = listing.user.profile_img.url
+            end
+        end
+    %>
+
+    <% listing_url = "/listings/#{listing.slug}" %>
+      <div class="col-md-4">
         <div class="thumbnail">
-          <%= link_to image_tag(listing.image.url), listing %>
-          <div class="caption">
-            <h3><%= listing.name %></h3>
-            <p><%= listing.price %> <%= t('euro') %></p>
-            <% if (user_signed_in?) && (current_user == listing.user) %>
-              <%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %>
-              <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
-            <% end %>
-          </div>
+          <a class="boat-listing" href="<%= listing_url %>" target="_blank">
+            <div class="listing-image" style="background-image:url('<%= listing.image.url %>')">
+              <div class="owner" style="background-image:url('<%= image %>')"></div>
+              <div class="price"><%= number_to_currency(listing.price) %></div>
+            </div>
+            <div class="caption">
+              <ul class="tags">
+                <li style="font-size: 13px;font-weight: 600;color: #7A8A93;list-style: none;padding-top: 27px;text-align: center;"><%= "Proposé par #{listing.user.first_name}" %></li>
+              </ul>
+              <div class="listing-title" style="color:#333"><%= listing.departure %> <em>→</em> <%= listing.arrival %></div>
+              <div class="listing-date" style="color:#333;padding-bottom:10px"><%= l listing.date.to_date, :format => :long %> à <%= listing.time %></div>
+              <div class="manager-listing" style="text-align:center;font-size:19px;color:#333"><%= link_to 'Modifier', edit_listing_path(listing), style: "color:green" %>  •  <%= link_to 'Supprimer', listing, method: :delete, data: { confirm: 'Êtes-vous sûr?' }, style: "color:red" %></div>
+            </div>
+          </a>
         </div>
       </div>
-    <% end %>
-  </div>
-</div>  
+  <% end %>
+</div>
