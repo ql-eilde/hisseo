@@ -2,7 +2,7 @@
   <h3 class="h3-title-index">Notre flotte vous attends</h3>
   <div class="row">
     <% @listings.each do |listing| %>
-      <% listing_url = "/listings/#{listing.id}" %>
+      <% listing_url = "/listings/#{listing.slug}" %>
       <% if listing.compte_passager != listing.nombre_passager %>
         <div class="col-md-4">
           <div class="thumbnail">

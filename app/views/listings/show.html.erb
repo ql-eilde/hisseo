@@ -3,12 +3,12 @@
     <h1 class="product-title"><%= @listing.departure %> <em>→</em> <%= @listing.arrival %></h1>
     <div class="horizontal-nav-header">
       <ul class="muted">
-        <li class="addby">Ajouté par <%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</li>
+        <li class="addby"><%= l @listing.date.to_date, :format => :long %> à <%= l @listing.time.to_time, :format => :short %></li>
       </ul>
     </div>
-    <div class="show-date">
-      <p class="content-date"><%= l @listing.date.to_date, :format => :long %> à <%= l @listing.time.to_time, :format => :short %></p>
-    </div>
+    <!-- <div class="show-date">
+      <p class="content-date"><%#= l @listing.date.to_date, :format => :long %> à <%#= l @listing.time.to_time, :format => :short %></p>
+    </div> -->
   </div>
 </section>
 <div class="col-md-8" style="margin-bottom:38px;">
@@ -39,12 +39,40 @@
 <div class="col-md-4">
   <div class="product-sidebar">
     <div class="buy-module">
-      <p class="product-price">
-        <span class="show-price"><%= number_to_currency(@listing.price) %></span>
-      </p>
-      <div class="btn btn-primary cartitem" style="margin-bottom:0;">
-        <span class="fa fa-credit-card"> </span>
-        <%= link_to "Réserver en ligne", new_listing_order_path(@listing), style: "color:white;text-decoration:none;", data: { no_turbolinks: true } %>
+      <div class="buy-price">
+        <p class="product-price">
+          <span class="show-price"><%= number_to_currency(@listing.price) %></span>
+        </p>
+        <p class="product-price-label">
+          <span class="price-label">par place</span>
+        </p>
+      </div>
+      <div class="buy-compte-passager">
+        <p class="product-compte"><% compte = @listing.nombre_passager - @listing.compte_passager %>
+          <span class="show-compte"><%= compte %></span>
+        </p>
+        <p class="product-compte-label">
+          <span class="show-compte-label">
+            <% if compte == 1 %>
+              place restante
+            <% else %>
+              places restantes
+            <% end %>
+          </span>
+        </p>
+      </div>
+      <div class="buy-choix-passager">
+        <p class="product-passager">
+          Combien de places souhaitez-vous réserver ?
+        </p>
+        <div class="product-choix-passager">
+          <form method="get" action="/listings/<%= params[:id] %>/orders/new">
+            <% @test = @listing.nombre_passager - @listing.compte_passager %>
+            <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
+            <%= select_tag(:compte_passager, options_for_select(options_array), class: "form-control select-passager") %>
+            <input type="submit" value="Réserver en ligne" class="btn btn-primary cartitem">
+          </form>
+        </div>
       </div>
     </div>
     <div class="seller-module">
