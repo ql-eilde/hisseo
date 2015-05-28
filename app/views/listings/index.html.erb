@@ -1,14 +1,32 @@
 <% if request.url() == root_url %>
   <h3 class="h3-title-index">Notre flotte vous attends</h3>
+<% else %>
+  <h3 class="h3-title-index">Résultats de votre recherche</h3>
+<% end %>
   <div class="row">
     <% @listings.each do |listing| %>
+
+      <%  profile_img = listing.user.profile_img_file_name
+          facebook_img = listing.user.facebook_img
+
+          if  profile_img.nil? && facebook_img.nil?
+              image = "/assets/default_profile.png"
+          else
+              if  !facebook_img.nil?
+                  image = facebook_img
+              else
+                  image = listing.user.profile_img.url
+              end
+          end
+      %>
+
       <% listing_url = "/listings/#{listing.slug}" %>
       <% if listing.compte_passager != listing.nombre_passager %>
         <div class="col-md-4">
           <div class="thumbnail">
             <a class="boat-listing" href="<%= listing_url %>" target="_blank">
               <div class="listing-image" style="background-image:url('<%= listing.image.url %>')">
-                <div class="owner" style="background-image:url('<%= listing.user.profile_img %>')"></div>
+                <div class="owner" style="background-image:url('<%= image %>')"></div>
                 <div class="price"><%= number_to_currency(listing.price) %></div>
               </div>
               <div class="caption">
@@ -28,6 +46,3 @@
   <div class="paginate">
     <%= will_paginate @listings, renderer: BootstrapPagination::Rails %>
   </div>
-<% else %>
-  <p>Page de résultat de recherche</p>
-<% end %>

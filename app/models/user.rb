@@ -5,6 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  if Rails.env.development?
+      has_attached_file   :profile_img, :styles => { :medium => "200x", :thumb => "100x100>" }
+
+  else
+      has_attached_file   :profile_img, :styles => { :medium => "200x", :thumb => "100x100>" },
+                          :storage => :dropbox,
+                          :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+                          :path => ":style/:id_:filename"
+  end
+
+  do_not_validate_attachment_file_type :profile_img
+
   validates :first_name, :last_name, :email, presence: true
 
   has_many :listings, dependent: :destroy
@@ -13,7 +25,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.profile_img = auth.info.image
+        user.facebook_img = auth.info.image
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email

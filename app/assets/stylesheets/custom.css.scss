@@ -508,6 +508,16 @@ body {
   border:1px solid #bfbfbf;
   margin-top:18px;
  }
+
+ .specs > dl.specs-list > dt {
+  clear: left;
+  width: 130px;
+  float: left;
+ }
+
+ .description-section {
+  margin-bottom: 18px;
+ }
  
  /* FOOTER */
 

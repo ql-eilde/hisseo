@@ -28,9 +28,47 @@
     <div class="tab-content">
       <div class="tab-pane fade in active" id="tab1">
         <section>
+        <div class="specs">
+            <dl class="specs-list">
+              <dt>Bagages:</dt>
+              <dd><%= @listing.bagages %></dd>
+              <dt>Type de bateau:</dt>
+              <dd><%= @listing.type_bateau %></dd>
+            </dl>
+          </div>
           <div class="description">
             <%= simple_format(@listing.description) %>
           </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-section">
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Questions publiques</a></li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+        <section>
+          <p>Le nombre de places restantes est automatiquement mis à jour sur l'annonce.</p>
+          <p>Vous pouvez poser vos questions au capitaine avant de réserver :</p>
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'hisseo';
+            var disqus_config=function(){this.language="fr";};
+            
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         </section>
       </div>
     </div>
