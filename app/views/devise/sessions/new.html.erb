@@ -1,36 +1,65 @@
-<h2>Connexion</h2>
-
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  
-  <div class="field form-group">
-    <%= link_to "/users/auth/facebook", class: "btn btn-primary" do %>
-      <i class="fa fa-facebook-official fa-2x"></i>
-      <div id="join-facebook">Connexion avec Facebook</div>
-    <% end %>
-  </div>
-
-  <hr class="divider">
-
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, :autofocus => true, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password, "Mot de passe" %>
-    <%= f.password_field :password, class: "form-control" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, "Se souvenir de moi" %>
+<div>
+  <div class="panel with-nav-tabs panel-default" style="border-color:#00c5cc;">
+    <div class="panel-heading" style="background-color:#00c5cc;padding:0;border-bottom:0;">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1default" data-toggle="tab">Connexion</a></li>
+        <li><a href="#tab2default" data-toggle="tab">Inscription</a></li>
+      </ul>
     </div>
-  <% end -%>
-
-  <div class="form-group">
-    <%= f.submit "Se connecter", class: "btn btn-primary" %>
+    <div class="panel-body">
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="tab1default">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field form-group">
+              <div style="width:320px;margin:auto;">
+                <%= link_to "/users/auth/facebook", class: "btn btn-primary", style: "margin-top:20px;margin-bottom:20px;" do %>
+                  <i class="fa fa-facebook-official fa-2x" style="float:left;margin-right:20px;margin-top:4px;"></i>
+                  <div id="join-facebook">Connexion avec Facebook</div>
+                <% end %>
+              </div>
+              <div style="text-align: center;font-style: italic;margin-bottom: 15px;">
+                <span>- OU -</span>
+            <!-- <hr class="divider"> -->
+              </div>
+              <div class="row" style="width:50%;margin:auto;">
+                <div class="col-md-6" style="width:100%;">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                </div>
+              </div><br>
+              <div class="row" style="width:50%;margin:auto;">
+                <div class="col-md-6" style="width:100%;">
+                  <%= f.label :password, "Mot de passe" %>
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                </div>
+              </div><br>
+              <div class="row" style="width:50%;margin:auto;">
+                <% if devise_mapping.rememberable? -%>
+                <div class="col-md-6" style="width:100%;">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me, "Se souvenir de moi" %>
+                </div>
+                <% end -%>
+              </div>
+              <div class="row" style="width:50%;margin:auto;">
+                <div class="col-md-6" style="width:100%;">
+                  <%= f.submit "Connexion", class: "btn btn-primary", style: "width:100%;" %>
+                </div>
+              </div><br>
+              <div class="row" style="width:50%;margin:auto;">
+                <div class="col-md-6" style="width:100%;">
+                  <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="tab2default">
+          <p>Cliquez ci-dessous pour créer votre compte :</p>
+          <p><%= link_to "Inscription", "#signup", data: {toggle: "modal"} %></p>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
