@@ -1,61 +1,87 @@
-<h2>Modifier <%= resource_name.to_s.humanize %></h2>
+<h2 class="listing-form-title">Modifier mon profil</h2><br />
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :first_name, "Prénom" %>
-    <%= f.text_field :first_name, :autofocus => true, class: "form-control" %>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Informations personnelles</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="row row-edit-user">
+            <div class="col-md-6">
+              <%= f.label :first_name, "Prénom" %>
+              <%= f.text_field :first_name, :autofocus => true, class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :last_name, "Nom" %>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row row-edit-user">
+            <div class="col-md-4">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :tel_number, "Numéro de téléphone" %>
+              <%= f.text_field :tel_number, placeholder: "format : XX.XX.XX.XX.XX", class: "form-control" %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :profile_img, "Image de profil" %>
+              <%= f.file_field :profile_img, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row row-edit-user">
+            <div class="col-md-6">
+              <%= f.label :password, "Nouveau mot de passe" %><br />
+              <%= f.password_field :password, :autocomplete => "off", placeholder: "laissez ce champ vide si vous ne souhaitez pas changer votre mot de passe", class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :password_confirmation, "Confirmer votre nouveau mot de passe" %><br />
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row" style="margin-top:35px;text-align:center">
+            <div class="col-md-12">
+              <%= f.label :current_password, "Votre mot de passe actuel" %> <br />
+              <%= f.password_field :current_password, placeholder: "nous avons besoin de votre mot de passe actuel pour confirmer les changements", class: "form-control", style: "width:600px;margin:auto;" %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Informations bancaires</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.label :iban_number, "Votre numéro IBAN" %>
+              <%= f.text_field :iban_number, class: "form-control", placeholder: "e.g. FR70 3000 2005 5000 0015 7845 Z02" %>
+            </div>
+            <div class="col-md-6">
+              <%= f.label :bic_number, "Votre numéro BIC" %>
+              <%= f.text_field :bic_number, class: "form-control", placeholder: "e.g. AGRIFRPP882" %>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :last_name, "Nom" %>
-    <%= f.text_field :last_name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :tel_number, "Numéro de téléphone" %>
-    <%= f.text_field :tel_number, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :profile_img, "Image de profil" %>
-    <%= f.file_field :profile_img, class: "form-control" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div class="form-group">
-      Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+    <div class="publish-button">
+      <%= f.submit "Mettre à jour", class: "btn btn-primary submit-listing" %>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :password, "Mot de passe" %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation, "Confirmer votre mot de passe" %><br />
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :current_password, "Votre mot de passe actuel" %> <i>(nous avons besoin de votre mot de passe actuel pour confirmer les changements)</i><br />
-    <%= f.password_field :current_password, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Mettre à jour", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <h3>Supprimer mon compte</h3>
 
-<p>Vous n'êtes pus statisfait de notre plateforme? <%= button_to "Supprimer mon compte", registration_path(resource_name), :data => { :confirm => "Vous êtes sur?" }, :method => :delete, class: "btn btn-danger" %></p>
+<p>Vous n'êtes plus statisfait de notre plateforme? <%= button_to "Supprimer mon compte", registration_path(resource_name), :data => { :confirm => "Vous êtes sur?" }, :method => :delete, class: "btn btn-danger" %></p>
 
-<%= link_to "Retour", :back %>
+<%# if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <!-- <div class="form-group">
+    Nous attendons la confirmation de votre adresse email: <%#= resource.unconfirmed_email %>
+    </div> -->
+<%# end %>

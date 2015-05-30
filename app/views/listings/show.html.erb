@@ -53,8 +53,10 @@
     <div class="tab-content">
       <div class="tab-pane fade in active" id="tab1">
         <section>
-          <p>Le nombre de places restantes est automatiquement mis à jour sur l'annonce.</p>
-          <p>Vous pouvez poser vos questions au capitaine avant de réserver :</p>
+          <div id="hint-disqus">
+            <p>Le nombre de places restantes est automatiquement mis à jour sur l'annonce.</p>
+            <p>Vous pouvez poser vos questions au capitaine avant de réserver :</p>
+          </div>
           <div id="disqus_thread"></div>
           <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES * * */
@@ -107,7 +109,7 @@
           <form method="get" action="/listings/<%= params[:id] %>/orders/new">
             <% @test = @listing.nombre_passager - @listing.compte_passager %>
             <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
-            <%= select_tag(:compte_passager, options_for_select(options_array), class: "form-control select-passager") %>
+            <%= select_tag(:linnaeus, options_for_select(options_array), class: "form-control select-passager") %>
             <input type="submit" value="Réserver en ligne" class="btn btn-primary cartitem">
           </form>
         </div>

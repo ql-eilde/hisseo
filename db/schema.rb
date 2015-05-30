@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528153252) do
+ActiveRecord::Schema.define(version: 20150530100000) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 20150528153252) do
     t.integer  "profile_img_file_size"
     t.datetime "profile_img_updated_at"
     t.string   "facebook_img"
+    t.string   "iban_number"
+    t.string   "bic_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

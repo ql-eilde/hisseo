@@ -1,12 +1,32 @@
-<div class="row">
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <%= image_tag @listing.image.url %>
-    </div>
-    <h3><%= @listing.name %></h3>
-    <h4><%= @listing.price %> <%= t('euro') %></h4>
-  </div>
+<% place = params[:linnaeus].to_i %>
+<div class="recap-order" style="overflow:hidden">
   <div class="col-md-8">
+    <div class="panel panel-primary panel-listing">
+      <div class="heading-listing panel-heading">Récapitulatif du voyage</div>
+        <div class="panel-body">
+          <div class="box-recap-trajet">
+            <ul class="list-recap-order">
+              <li class="recap-tarif">
+                <span class="list-left">
+                  <span><strong><%= place %> <% if place == 1 %><%= "place" %><% else %><%= "places" %><% end %></strong></span>
+                  <span>x</span> <%= number_to_currency(@listing.price) %>
+                </span>
+                <span class="list-right">
+                  <%= number_to_currency(@listing.price * place) %>
+                </span>
+              </li>
+              <li class="recap-tarif">
+                <span class="list-left">Frais de réservation</span>
+                <span class="list-right"><% frais = ((place * 1) + (place * (@listing.price * 0.09))) %><%= number_to_currency(frais) %></span>
+              </li>
+              <li class="recap-tarif" style="border-top:1px solid #ddd;padding-top:17px">
+                <span class="list-left"><strong>Total</strong></span>
+                <span class="list-right"><strong><% total = ((@listing.price * place) + frais) %><%= number_to_currency(total) %></strong></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
     <%= form_for([@listing, @order]) do |f| %>
       <% if @order.errors.any? %>
         <div id="error_explanation">
@@ -20,48 +40,92 @@
           </ul>
         </div>
       <% end %>
-
-      <div id="stripe_error" class="alert alert-danger" style="display:none">
-        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-      </div>
-
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-3">
-            <%= f.label :compte_passager, "Nombre de passagers" %>
-            <%#= f.text_field :compte_passager %>
-            <input class="form-control" type="text" name="compte_passager" id="compte_passager" value="<%= params[:compte_passager] %>" />
+      <div class="panel panel-primary panel-listing">
+        <div class="heading-listing panel-heading">Paiement sécurisé</div>
+          <div class="panel-body">
+            <div class="box-paiement">
+              <div id="carte-bancaire">
+                <h4 class="title-carte">Carte bancaire</h4>
+                <ul class="liste-carte">
+                  <li class="img-carte"><img src="https://d1ovtcjitiy70m.cloudfront.net/vi-1/images/payment/card-visa.png" alt="Visa" width="29" style="margin-right:5px"></li>
+                  <li class="img-carte"><img src="https://d1ovtcjitiy70m.cloudfront.net/vi-1/images/payment/card-mastercard.png" alt="Mastercard" width="29" style="margin-right:5px"></li>
+                  <li class="img-carte"><img src="https://d1ovtcjitiy70m.cloudfront.net/vi-1/images/payment/card-cb.png" width="29" alt="CB" style="margin-right:5px"></li>
+                </ul>
+              </div>
+              <div class="row" style="margin-bottom:15px;">
+                <div class="col-md-8">
+                  <%= label_tag :card_number, "Numéro de carte" %>
+                  <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control", autofocus: true } %>
+                </div>
+                <div class="col-md-4">
+                  <%= label_tag :card_code, "Code de sécurité" %>
+                  <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
+                  <div img="https://du7dtrj7qz5as.cloudfront.net/vi-1/images/payment/payment-code.png"></div>
+                </div>
+              </div>
+              <%= label_tag nil, "Date d'expiration" %>
+              <div class="row">
+                <div class="col-md-3">
+                  <%= select_month nil, { use_two_digit_numbers: true }, { :name => nil, :'data-stripe' => "exp-month", class: "form-control" } %>
+                </div>
+                <div class="col-md-3">
+                  <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
+                </div>
+              </div>
+              <input class="form-control" type="text" name="compte_passager" id="compte_passager" value="<%= params[:linnaeus] %>" style="display:none" />
+              <div class="form-group" style="margin-top:20px;text-align:center;">
+                <%= f.submit "Valider", class: "btn btn-success", style: "width:150px;font-size:18px;" %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-8">
-            <%= label_tag :card_number, "Numéro de votre carte de crédit" %>
-            <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control" } %>
-          </div>
-          <div class="col-md-4">
-            <%= label_tag :card_code, "Code de sécurité" %>
-            <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= label_tag nil, "Date d'expiration" %>
-        <div class="row">
-          <div class="col-md-3">
-            <%= select_month nil, { use_two_digit_numbers: true }, { :name => nil, :'data-stripe' => "exp-month", class: "form-control" } %>
-          </div>
-          <div class="col-md-3">
-            <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "Valider", class: "btn btn-success" %>
       </div>
     <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-primary panel-listing">
+        <div class="heading-listing panel-heading">Récapitulatif</div>
+          <div class="panel-body">
+            <div class="box-recap" style="padding-bottom:17px">
+              <ul style="list-style:none;padding-left:7px">
+                <li>
+                  <span><i class="fa fa-calendar" style="padding-right:10px"></i><%= l @listing.date.to_date, :format => :long %></span>
+                </li>
+                <li class="liste-trajet">
+                  <span><i class="fa fa-clock-o" style="padding-right:11px"></i><%= l @listing.time.to_time, :format => :short %></span>
+                </li>
+                <li class="liste-trajet">
+                  <span><i class="fa fa-map-marker" style="color:green;padding-right:13px"></i><%= @listing.departure %></span>
+                </li>
+                <li class="liste-trajet">
+                  <span><i class="fa fa-map-marker" style="color:red;padding-right:13px"></i><%= @listing.arrival %></span>
+                </li>
+              </ul>
+            </div>
+            <div class="box-profil" style="padding-top:17px;border-top:1px solid #ddd">
+              <%  profile_img = @listing.user.profile_img_file_name
+                facebook_img = @listing.user.facebook_img
+
+                if  profile_img.nil? && facebook_img.nil?
+                    image = "/assets/default_profile.png"
+                else
+                  if  !facebook_img.nil?
+                      image = facebook_img
+                  else
+                      image = @listing.user.profile_img.url
+                  end
+                end
+              %>
+              <div class="profile-capitaine" style="background-image:url('<%= image %>')"></div>
+              <div class="about-seller">
+                <ul>
+                  <li class="strong"><%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</li>
+                  <li class="small">
+                    <p>Membre depuis le <%= l @listing.user.created_at.to_date, :format => :short %></p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </div>
   </div>
 </div>

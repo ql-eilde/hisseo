@@ -48,10 +48,12 @@ class OrdersController < ApplicationController
 
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
     token = params[:stripeToken]
+    amount = ((@listing.price * params[:compte_passager].to_i) + ((params[:compte_passager].to_i * 1) + (params[:compte_passager].to_i * (@listing.price * 0.09)))) * 100
+    puts amount
 
     begin
       charge = Stripe::Charge.create(
-        :amount => (@listing.price * params[:compte_passager].to_i * 100).floor,
+        :amount => amount.floor,
         :currency => "EUR",
         :card => token
         )

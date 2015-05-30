@@ -537,6 +537,12 @@ body {
   margin-bottom: 18px;
  }
 
+ .description {
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 3px;
+ }
+
  .profile-capitaine {
   background-size: cover;
   background-position: center center;
@@ -544,6 +550,14 @@ body {
   height: 54px;
   float: left;
   margin-right: 15px;
+ }
+
+ #hint-disqus {
+  background-color: antiquewhite;
+  padding: 10px;
+  padding-bottom: 1px;
+  border-radius: 4px;
+  font-weight: bold;
  }
 
  /* LISTING FORM */
@@ -570,6 +584,69 @@ body {
  .submit-listing {
   width: 300px;
   font-size: 17px;
+ }
+
+ /* USER */
+
+ .row-edit-user {
+  margin-bottom: 15px;
+ }
+
+ /* ORDER */
+
+ .box-recap-trajet {
+  font-size: 14px;
+ }
+
+ .list-recap-order {
+  list-style: none;
+  padding-left: 0;
+ }
+
+ .recap-tarif {
+  padding-bottom: 17px;
+  margin-bottom: 17px;
+ }
+
+ .list-left {
+  margin: 0;
+  float: left;
+  width: 300px;
+ }
+
+ .list-right {
+  width: 220px;
+  text-align: right;
+  float: right;
+  margin-left: 20px;
+ }
+
+ .title-carte {
+  margin-right: 17px;
+  float: left;
+ }
+
+ .liste-carte {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-top: 8px;
+ }
+
+ .img-carte {
+  display: inline;
+ }
+
+ #carte-bancaire {
+  display: block;
+  height: 35px;
+  overflow: hidden;
+  margin-bottom: 20px;
+ }
+
+ .liste-trajet {
+  margin-top: 7px;
  }
  
  /* FOOTER */
