@@ -43,11 +43,11 @@
 																</tr>
 																<tr>
 																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Date</td>
-																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.date %></b></td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= l @listing.date.to_time, :format => :long %></b></td>
 																</tr>
 																<tr>
 																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Heure</td>
-																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= @listing.time %></b></td>
+																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff"><b><%= l @listing.time.to_time, :format => :short %></b></td>
 																</tr>
 																<tr>
 																	<td align="left" style="border-bottom:1px solid #e3e0e0;border-top:1px solid #ffffff">Nb de place(s)</td>
