@@ -9,13 +9,16 @@
       <div class="modal-body">
         <h4></h4><br>
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-          <div class="field form-group">
-            <%= link_to "/users/auth/facebook", class: "btn btn-primary" do %>
-              <i class="fa fa-facebook-official fa-2x"></i>
-              <div id="join-facebook">Connexion avec Facebook</div>
+          <div class="field form-group" style="text-align:center;margin-bottom:35px;margin-top:-25px;">
+            <%= link_to "/users/auth/facebook", class: "btn btn-primary", style: "width:400px;text-align:center;" do %>
+              <i class="fa fa-facebook-official fa-2x" style="font-size:2.5em;padding-top:4px;"></i>
+              <div class="join-facebook-modal">Connexion avec Facebook</div>
             <% end %>
           </div>
-          <hr class="divider">
+          <div style="text-align: center;font-style: italic;margin-bottom: 15px;">
+            <span>- OU -</span>
+            <!-- <hr class="divider"> -->
+          </div>
           <div class="form-group">
             <%= f.label :email %>
             <%= f.email_field :email, :autofocus => true, class: "form-control" %>
@@ -30,8 +33,8 @@
               <%= f.label :remember_me, "Se souvenir de moi" %>
             </div>
           <% end -%>
-          <div class="form-group">
-            <%= f.submit "Se connecter", class: "btn btn-primary" %>
+          <div class="form-group" style="text-align:center">
+            <%= f.submit "Se connecter", class: "btn btn-primary", style: "width:250px;font-size:18px;" %>
           </div>
             <p><%= link_to "Vous n'avez pas de compte?", "#signup", data: {toggle: "modal"} %></p>
             <p><%= link_to "Vous avez oublié votre mot de passe?", new_password_path(resource_name) %></p>
@@ -53,10 +56,11 @@
         <h4></h4><br>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <%= devise_error_messages! %>
-          <div class="field form-group">
-            <%= link_to "/users/auth/facebook", class: "btn btn-primary" do %>
-              <i class="fa fa-facebook-official fa-2x"></i>
-              <div id="join-facebook">S'inscrire avec Facebook</div>
+          <div class="field form-group" style="text-align:center;margin-bottom:35px;margin-top:-25px;">
+            <p style="font-size:20px;">La manière la plus simple et la plus rapide</p>
+            <%= link_to "/users/auth/facebook", class: "btn btn-primary", style: "width:400px;text-align:center;" do %>
+              <i class="fa fa-facebook-official fa-2x" style="font-size:2.5em;padding-top:4px;"></i>
+              <div class="join-facebook-modal">S'inscrire avec Facebook</div>
             <% end %>
           </div>
           <hr class="divider">
@@ -84,8 +88,8 @@
             <p>En vous inscrivant, vous accepetez nos <a href="/">conditions générales d'utilisation.</a></p>
           </div><br />
           <%= recaptcha_tags %>
-          <div class="form-group">
-            <%= f.submit "S'inscrire", class: "btn btn-primary" %>
+          <div class="form-group" style="text-align:center;margin-top:15px;">
+            <%= f.submit "S'inscrire", class: "btn btn-primary", style: "width:200px;font-size:18px;" %>
           </div>
             <p><%= link_to "Vous possédez un compte?", new_session_path(resource_name) %></p>
         <% end %>

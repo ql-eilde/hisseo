@@ -16,11 +16,25 @@ body {
   	flex-direction: column;
 }
 
+.site-all {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #E0EFF3;
+}
+
 .site-content {
   	flex: 1;
   	margin-top: 50px;
   	margin-bottom: 50px;
 }
+
+/* MODAL */
+
+.join-facebook-modal {
+  padding-top: 3px;
+  font-size: 22px;
+ }
 
 /* HEADER INDEX */
 
@@ -170,7 +184,7 @@ body {
  #join-facebook {
  	padding-top: 3px;
  	font-size: 22px;
- 	padding-right:50px;
+  padding-right: 50px;
  }
 
  #search-bar {
@@ -469,6 +483,10 @@ body {
   border-radius:4px;
  }
 
+ .about-seller {
+  overflow: hidden;
+ }
+
  .about-seller > ul {
   list-style:none;
   padding-left:0;
@@ -517,6 +535,41 @@ body {
 
  .description-section {
   margin-bottom: 18px;
+ }
+
+ .profile-capitaine {
+  background-size: cover;
+  background-position: center center;
+  width: 62px;
+  height: 54px;
+  float: left;
+  margin-right: 15px;
+ }
+
+ /* LISTING FORM */
+
+ .listing-form-title {
+  color: #6f6f6f;
+  font-weight: bold;
+ }
+
+ .panel-listing {
+  border-color: #00c5cc;
+ }
+
+ .panel-primary > .heading-listing {
+  font-size: 17px;
+  background-color: #00c5cc;
+  border-color: #00c5cc;
+ }
+
+ .publish-button {
+  text-align: center;
+ }
+
+ .submit-listing {
+  width: 300px;
+  font-size: 17px;
  }
  
  /* FOOTER */

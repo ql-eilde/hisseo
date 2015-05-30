@@ -118,6 +118,20 @@
         <h4>Votre capitaine</h4>
       </div>
       <div class="body-seller-module">
+          <%  profile_img = @listing.user.profile_img_file_name
+              facebook_img = @listing.user.facebook_img
+
+              if  profile_img.nil? && facebook_img.nil?
+                  image = "/assets/default_profile.png"
+              else
+                if  !facebook_img.nil?
+                    image = facebook_img
+                else
+                    image = @listing.user.profile_img.url
+                end
+              end
+          %>
+        <div class="profile-capitaine" style="background-image:url('<%= image %>')"></div>
         <div class="about-seller">
           <ul>
             <li class="strong"><%= @listing.user.first_name %> <%= @listing.user.last_name.first %>.</li>
@@ -128,12 +142,12 @@
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary contact" data-toggle="modal" data-target="#myModal">
+        <!-- <button type="button" class="btn btn-primary contact" data-toggle="modal" data-target="#myModal">
           <span class="fa fa-comment-o"></span> Contacter le vendeur
-        </button>
+        </button> -->
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -174,7 +188,7 @@
               <%# end %>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

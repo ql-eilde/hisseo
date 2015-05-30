@@ -12,8 +12,8 @@
     </div>
   <% end %>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading">Quel trajet souhaitez-vous proposer?</div>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Quel trajet souhaitez-vous proposer?</div>
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
@@ -29,8 +29,8 @@
         </div>
       </div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Quand est-ce que vous partez?</div>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Quand est-ce que vous partez?</div>
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
@@ -46,11 +46,11 @@
         </div>
       </div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Détails du voyage</div>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Détails du voyage</div>
       <div class="panel-body">
         <div class="form-group">
-          <div class="row">
+          <div class="row" style="margin-bottom:10px">
             <div class="col-md-12">
               <%= f.label :description, "Vous pouvez donner içi des informations complémentaires concernant votre trajet. Cela vous évitera beaucoup de questions de vos passagers." %>
               <%= f.text_area :description, placeholder: "(durée, précision sur l'embarquement ou le débarquement, description de votre bateau, est-ce que vous proposez des activités, etc)", class: "form-control" %>
@@ -78,8 +78,8 @@
         </div>
       </div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">A quoi ressemble votre bateau?</div>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">A quoi ressemble votre bateau?</div>
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
@@ -99,8 +99,8 @@
         </div>
       </div>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Places et prix</div>
+  <div class="panel panel-primary panel-listing">
+    <div class="heading-listing panel-heading">Places et prix</div>
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
@@ -121,7 +121,7 @@
   
   <div class="form-group">
     <div class="publish-button">
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit "Créer une annonce", class: "btn btn-primary submit-listing" %>
     </div>
   </div>
 <% end %>
