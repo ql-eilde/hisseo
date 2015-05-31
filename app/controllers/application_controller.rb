@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :ensure_domain
+
+  # def ensure_domain
+  # 	if request.env['HTTP_HOST'] == 'immense-cove-4146.herokuapp.com'
+  #    redirect_to "https://www.hisseo.co#{request.env['REQUEST_PATH']}", :status => 301
+  #  end
+  # end
 
   protected
 

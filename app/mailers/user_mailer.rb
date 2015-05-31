@@ -13,6 +13,6 @@ class UserMailer < ApplicationMailer
 
 	def new_listing(listing)
 		@listing = listing
-		mail( :to => @listing.user.email, :subject => 'hisseo.co - Votre annonce !')
+		mail( :to => @listing.user.email, :subject => 'hisseo.co - Votre annonce')
 	end
 end

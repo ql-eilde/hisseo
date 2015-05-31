@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hisseo</title>
+  <title>Hisseo - Prenez le large, en cobaturage</title>
+  <meta name="description" content="Hisseo.co est une plateforme permettant la mise en relation de propriétaires de bateaux proposant des trajets entre ports avec des personnes désirant ce déplacer vers des îles où des ports.">
+  <meta name="keywords" content="cobaturage,partage,maritime,bateau,nautisme">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr&region=FR&key=AIzaSyBKzdqWBAURcThA7ESXsKi5QfPyy6PddOo" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -55,4 +57,14 @@
     <%= render "layouts/footer" %>
   </body>
 <% end %>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63587080-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </html>
