@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'manager' => "listings#manager"
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
+  get 'pages/cgu'
+  get 'pages/legal'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
