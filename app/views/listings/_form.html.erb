@@ -109,9 +109,9 @@
               <%= f.number_field :nombre_passager, {value: '3', min: '1', max: '10', step: '1', class: "form-control"} %>
             </div>
             <div class="col-md-6">
-              <%= f.label :price, "Prix par place" %> (prix généralement proposé : 29 €)
+              <%= f.label :price, "Prix par place" %> (Conseil : comptez 2 à 3 euros du mille nautique parcourus. Prix minimum : 15 €)
               <div class="input-group">
-                <%= f.number_field :price, {value: '29', min: '15', max: '100', step: '1', class: "form-control"} %><span class="input-group-addon">€</span>
+                <%= f.number_field :price, {value: '29', min: '15', max: '1000', step: '1', class: "form-control"} %><span class="input-group-addon">€</span>
               </div>
             </div>
           </div>
