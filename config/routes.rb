@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   get 'purchases' => "orders#purchases"
   get 'pages/cgu'
   get 'pages/legal'
+  get 'pages/contact'
+  get 'pages/comment_ca_marche'
+  get 'pages/about'
+  get 'pages/faq'
+  get 'pages/game'
+  get 'pages/guide'
+  get 'pages/press'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

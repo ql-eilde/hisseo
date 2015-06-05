@@ -23,13 +23,13 @@
               </div>
               <div class="row" style="width:50%;margin:auto;">
                 <div class="col-md-6" style="width:100%;">
-                  <%= f.label :email %>
+                  <%= f.label :email, "Email *" %>
                   <%= f.email_field :email, autofocus: true, class: "form-control" %>
                 </div>
               </div><br>
               <div class="row" style="width:50%;margin:auto;">
                 <div class="col-md-6" style="width:100%;">
-                  <%= f.label :password, "Mot de passe" %>
+                  <%= f.label :password, "Mot de passe *" %>
                   <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
                 </div>
               </div><br>
@@ -48,6 +48,7 @@
               </div><br>
               <div class="row" style="width:50%;margin:auto;">
                 <div class="col-md-6" style="width:100%;">
+                  <p>* Champs obligatoires</p>
                   <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name) %>
                 </div>
               </div>
