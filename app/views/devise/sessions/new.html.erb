@@ -22,32 +22,32 @@
             <!-- <hr class="divider"> -->
               </div>
               <div class="row" style="width:50%;margin:auto;">
-                <div class="col-md-6" style="width:100%;">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="width:100%;">
                   <%= f.label :email, "Email *" %>
                   <%= f.email_field :email, autofocus: true, class: "form-control" %>
                 </div>
               </div><br>
               <div class="row" style="width:50%;margin:auto;">
-                <div class="col-md-6" style="width:100%;">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="width:100%;">
                   <%= f.label :password, "Mot de passe *" %>
                   <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
                 </div>
               </div><br>
               <div class="row" style="width:50%;margin:auto;">
                 <% if devise_mapping.rememberable? -%>
-                <div class="col-md-6" style="width:100%;">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="width:100%;">
                   <%= f.check_box :remember_me %>
                   <%= f.label :remember_me, "Se souvenir de moi" %>
                 </div>
                 <% end -%>
               </div>
               <div class="row" style="width:50%;margin:auto;">
-                <div class="col-md-6" style="width:100%;">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="width:100%;">
                   <%= f.submit "Connexion", class: "btn btn-primary", style: "width:100%;" %>
                 </div>
               </div><br>
               <div class="row" style="width:50%;margin:auto;">
-                <div class="col-md-6" style="width:100%;">
+                <div class="col-xs-6 col-sm-6 col-md-6" style="width:100%;">
                   <p>* Champs obligatoires</p>
                   <%= link_to "Vous avez oublié votre mot de passe ?", new_password_path(resource_name) %>
                 </div>

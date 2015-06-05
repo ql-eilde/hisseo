@@ -11,7 +11,7 @@
     </div> -->
   </div>
 </section>
-<div class="col-md-8" style="margin-bottom:38px;">
+<div class="col-xs-8 col-sm-8 col-md-8" style="margin-bottom:38px;">
   <section class="gallery">
     <div class="fotorama" data-width="100%" data-nav="thumbs" data-allowfullscreen="true" data-loop="true" data-arrows="true">
       <%= image_tag @listing.image.url %>
@@ -76,7 +76,7 @@
     </div>
   </div>
 </div>
-<div class="col-md-4">
+<div class="col-xs-4 col-sm-4 col-md-4">
   <div class="product-sidebar">
     <div class="buy-module">
       <div class="buy-price">
@@ -161,19 +161,19 @@
                 <%#= form_for ([@listing, Contact.new]), :html => {:class => 'form-horizontal'} do |f| %>
                 <div class="field form-group" style="padding:0 30px;">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                       <%#= f.label :name, "Votre nom complet" %>
                       <%#= f.text_field :name, :required => true, class: "form-control" %>
                     </div>
                   </div><br>
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                       <%#= f.label :email, "Votre adresse email" %>
                       <%#= f.text_field :email, :required => true, class: "form-control" %>
                     </div>
                   </div><br>
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                       <%#= f.label :message, "Votre message" %>
                       <%#= f.text_area :message, :as => :text, :required => true, class: "form-control" %>
                     </div>

@@ -17,12 +17,12 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-6">
-              <%= f.label :departure, "Ville d'embarquement" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :departure, "Ville d'embarquement *" %>
               <%= f.text_field :departure, id: "address_departure", autofocus: true, class: "form-control" %>
             </div>
-            <div class="col-md-6">
-              <%= f.label :arrival, "Ville de débarquement" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :arrival, "Ville de débarquement *" %>
               <%= f.text_field :arrival, id: "address_arrival", class: "form-control" %>
             </div>
           </div>
@@ -34,12 +34,12 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-6">
-              <%= f.label :date, "Date de départ" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :date, "Date de départ *" %>
               <%= f.text_field :date, class: "form-control datepicker" %>
             </div>
-            <div class="col-md-6">
-              <%= f.label :time, "Heure de départ" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :time, "Heure de départ *" %>
               <%= f.text_field :time, class: "form-control timepicker" %>
             </div>
           </div>
@@ -51,14 +51,14 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row" style="margin-bottom:10px">
-            <div class="col-md-12">
-              <%= f.label :description, "Vous pouvez donner içi des informations complémentaires concernant votre trajet. Cela vous évitera beaucoup de questions de vos passagers." %>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <%= f.label :description, "Vous pouvez donner içi des informations complémentaires concernant votre trajet. Cela vous évitera beaucoup de questions de vos passagers. *" %>
               <%= f.text_area :description, placeholder: "(durée, précision sur l'embarquement ou le débarquement, description de votre bateau, est-ce que vous proposez des activités, etc)", class: "form-control" %>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
-              <%= f.label :type_bateau, "Type de bateau" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :type_bateau, "Type de bateau *" %>
               <select name="listing[type_bateau]" id="type_bateau" class="form-control">
                 <option value="Vedette">Vedette</option>
                 <option value="Zodiac">Zodiac</option>
@@ -66,8 +66,8 @@
                 <option value="Autre">Autre</option>
               </select>
             </div>
-            <div class="col-md-6">
-              <%= f.label :bagages, "Bagages autorisés" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :bagages, "Bagages autorisés *" %>
               <select name="listing[bagages]" id="bagages" class="form-control">
                 <option value="Petites tailles">Petites tailles</option>
                 <option selected="selected">Moyennes tailles</option>
@@ -83,15 +83,15 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-4">
-              <%= f.label :image, "1ere image" %>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+              <%= f.label :image, "1ere image *" %>
               <%= f.file_field :image %>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4 col-sm-4 col-md-4">
               <%= f.label :image2, "2eme image" %>
               <%= f.file_field :image2 %>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4 col-sm-4 col-md-4">
               <%= f.label :image3, "3eme image" %>
               <%= f.file_field :image3 %>
             </div>
@@ -104,12 +104,12 @@
       <div class="panel-body">
         <div class="form-group">
           <div class="row">
-            <div class="col-md-6">
-              <%= f.label :nombre_passager, "Nombre de places proposées" %>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :nombre_passager, "Nombre de places proposées *" %>
               <%= f.number_field :nombre_passager, {value: '3', min: '1', max: '10', step: '1', class: "form-control"} %>
             </div>
-            <div class="col-md-6">
-              <%= f.label :price, "Prix par place" %> (Conseil : comptez 2 à 3 euros du mille nautique parcourus. Prix minimum : 15 €)
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%= f.label :price, "Prix par place *" %> (comptez 2 à 3 euros du mille nautique - prix minimum : 15 €)
               <div class="input-group">
                 <%= f.number_field :price, {value: '29', min: '15', max: '1000', step: '1', class: "form-control"} %><span class="input-group-addon">€</span>
               </div>
@@ -118,7 +118,7 @@
         </div>
       </div>
   </div>
-  
+  <p>* Champs obligatoires</p>
   <div class="form-group">
     <div class="publish-button">
       <%= f.submit "Créer une annonce", class: "btn btn-primary submit-listing" %>

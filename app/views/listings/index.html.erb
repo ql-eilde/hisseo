@@ -22,7 +22,7 @@
 
       <% listing_url = "/listings/#{listing.slug}" %>
       <% if listing.compte_passager != listing.nombre_passager %>
-        <div class="col-md-4">
+        <div class="col-xs-4 col-sm-4 col-md-4">
           <div class="thumbnail">
             <a class="boat-listing" href="<%= listing_url %>" target="_blank">
               <div class="listing-image" style="background-image:url('<%= listing.image.url %>')">

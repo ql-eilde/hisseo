@@ -1,6 +1,6 @@
 <% place = params[:linnaeus].to_i %>
 <div class="recap-order" style="overflow:hidden">
-  <div class="col-md-8">
+  <div class="col-xs-8 col-sm-8 col-md-8">
     <div class="panel panel-primary panel-listing">
       <div class="heading-listing panel-heading">Récapitulatif du voyage</div>
         <div class="panel-body">
@@ -53,11 +53,11 @@
                 </ul>
               </div>
               <div class="row" style="margin-bottom:15px;">
-                <div class="col-md-8">
+                <div class="col-xs-8 col-sm-8 col-md-8">
                   <%= label_tag :card_number, "Numéro de carte" %>
                   <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control", autofocus: true } %>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4 col-sm-4 col-md-4">
                   <%= label_tag :card_code, "Code de sécurité" %>
                   <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
                   <div img="https://du7dtrj7qz5as.cloudfront.net/vi-1/images/payment/payment-code.png"></div>
@@ -65,10 +65,10 @@
               </div>
               <%= label_tag nil, "Date d'expiration" %>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-xs-3 col-sm-3 col-md-3">
                   <%= select_month nil, { use_two_digit_numbers: true }, { :name => nil, :'data-stripe' => "exp-month", class: "form-control" } %>
                 </div>
-                <div class="col-md-3">
+                <div class="col-xs-3 col-sm-3 col-md-3">
                   <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: "form-control" } %>
                 </div>
               </div>
@@ -81,7 +81,7 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-xs-4 col-sm-4 col-md-4">
     <div class="panel panel-primary panel-listing">
         <div class="heading-listing panel-heading">Récapitulatif</div>
           <div class="panel-body">
