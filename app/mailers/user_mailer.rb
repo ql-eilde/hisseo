@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-	default from: "quentin.leilde@gmail.com"
+	default from: "hello@hisseo.co"
 
 	def new_sell(order)
 		@order = order

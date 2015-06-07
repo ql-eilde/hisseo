@@ -82,12 +82,12 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.mandrillapp.com",
     port: "587",
-    domain: "gmail.com",
+    domain: "hisseo.co",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['GMAIL_USERNAME_DEV'],
-    password: ENV['GMAIL_PASSWORD_DEV']
+    user_name: ENV['MANDRILL_USERNAME'],
+    password: ENV['MANDRILL_PASSWORD']
   }
 end
