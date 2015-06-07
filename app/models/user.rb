@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
   has_many :sales, class_name: "Order", foreign_key: "seller_id"
   has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
 
+  def confirm!
+    welcome_email
+    super
+  end
+
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.facebook_img = auth.info.image
@@ -33,5 +38,11 @@ class User < ActiveRecord::Base
         user.last_name = auth.info.last_name
         user.password = Devise.friendly_token[0,20]
       end
-  end  
+  end
+
+  private
+
+    def welcome_email
+      UserMailer.new_user(self).deliver_now
+    end
 end
