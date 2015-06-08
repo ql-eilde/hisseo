@@ -23,6 +23,11 @@ class Listing < ActiveRecord::Base
     end
 
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_size :image, :in => 0..2.megabytes
+  validates_attachment_size :image2, :in => 0..2.megabytes
+  validates_attachment_size :image3, :in => 0..2.megabytes
 
   validates :departure, :arrival, :description, :price, :date, :time, :nombre_passager, :type_bateau, :bagages, presence: true
   validates :price, numericality: { greater_than: 0 }

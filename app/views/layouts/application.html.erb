@@ -11,6 +11,7 @@
   <meta name="keywords" content="cobaturage,partage,maritime,bateau,nautisme,co-navigation,twailor">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=fr&region=FR&key=AIzaSyBKzdqWBAURcThA7ESXsKi5QfPyy6PddOo" %>
+  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "https://js.stripe.com/v2/" %>
   <%= csrf_meta_tags %>
@@ -100,6 +101,7 @@
 
   ga('create', 'UA-63587080-1', 'auto');
   ga('require', 'linkid', 'linkid.js');
+  ga('set', 'anonymizeIp', true);
   ga('send', 'pageview');
 
 </script>
