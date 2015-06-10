@@ -50,7 +50,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div id="hero-wrapper" class="hidden-md">
+<div id="hero-wrapper">
   <div id="hero">
     <%= image_tag("golfe-du-morbihan.jpg", id: "pretzel-image") %>
   </div>
@@ -67,7 +67,7 @@
     </div>
     <div id="search-bar">
       <div class="search-form">
-        <%= form_tag listings_path, method: "get" do %>
+        <%= form_tag listings_path, style: "width:730px", method: "get" do %>
           <input class="form-control search-box" type="text" name="departure" id="search_address_departure" placeholder="De" autofocus="true" />
           <input class="form-control search-box" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
           <input type="text" name="date" class="datepicker form-control search-date-box" placeholder="Date" />
