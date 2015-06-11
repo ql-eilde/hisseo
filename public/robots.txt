@@ -5,3 +5,9 @@ User-agent: *
 Disallow: /tmp/
 Disallow: /orders
 Disallow: /admin
+Disallow: /listings
+Disallow: /pages/press
+Disallow: /pages/legal
+Disallow: /pages/cgu
+Disallow: /pages/guide
+Disallow: /pages/game
