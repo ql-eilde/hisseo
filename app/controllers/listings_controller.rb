@@ -10,8 +10,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    if params[:departure]
-      @test = "#{params[:departure]}-#{params[:arrival]}"
+    if params[:departure] && params[:arrival] && params[:date]
+      @test = "#{params[:departure].capitalize}-#{params[:arrival].capitalize}"
       @listings = Listing.filter(@test, params[:date]).order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
     else
       @listings = Listing.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 9)
@@ -38,6 +38,8 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
     @listing.name = "#{listing_params[:departure].capitalize}-#{listing_params[:arrival].capitalize}"
+    @listing.departure = "#{listing_params[:departure].capitalize}"
+    @listing.arrival = "#{listing_params[:arrival].capitalize}"
     length = 10
     @listing.slug = "#{listing_params[:departure].downcase.parameterize}-#{listing_params[:arrival].downcase.parameterize}-#{rand(36**length).to_s(36)}"
 

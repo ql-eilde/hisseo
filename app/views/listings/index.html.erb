@@ -21,7 +21,7 @@
       %>
 
       <% listing_url = "/listings/#{listing.slug}" %>
-      <%# if listing.time.to_time > Time.now.to_time %>
+      <% if listing.compte_passager != listing.nombre_passager %>
         <div class="col-xs-4 col-sm-4 col-md-4">
           <div class="thumbnail">
             <a class="boat-listing" href="<%= listing_url %>" target="_blank">
@@ -34,12 +34,16 @@
                   <li><%= "Proposé par #{listing.user.first_name}" %></li>
                 </ul>
                 <div class="listing-title"><%= listing.departure %> <em>→</em> <%= listing.arrival %></div>
-                <div class="listing-date"><%= l listing.date.to_date, :format => :long %> à <%= listing.time %></div>
+                <% if listing.date.to_date < Time.now.to_date %>
+                  <div class="listing-date">Trajet effectué</div>
+                <% else %>
+                  <div class="listing-date"><%= l listing.date.to_date, :format => :long %> à <%= listing.time %></div>
+                <% end %>
               </div>
             </a>
           </div>
         </div>
-      <%# end %>
+      <% end %>
     <% end %>
   </div>
 
