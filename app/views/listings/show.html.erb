@@ -105,14 +105,18 @@
         <p class="product-passager">
           Combien de places souhaitez-vous réserver ?
         </p>
-        <div class="product-choix-passager">
-          <form method="get" action="/listings/<%= params[:id] %>/orders/new">
-            <% @test = @listing.nombre_passager - @listing.compte_passager %>
-            <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
-            <%= select_tag(:linnaeus, options_for_select(options_array), class: "form-control select-passager") %>
-            <input type="submit" value="Réserver en ligne" class="btn btn-primary cartitem">
-          </form>
-        </div>
+        <% if @listing.date.to_date > Time.now.to_date %>
+          <div class="product-choix-passager">
+            <form method="get" action="/listings/<%= params[:id] %>/orders/new">
+              <% @test = @listing.nombre_passager - @listing.compte_passager %>
+              <% options_array = (1..@test).to_a.collect{|p| ["#{p}", p]} %>
+              <%= select_tag(:linnaeus, options_for_select(options_array), class: "form-control select-passager") %>
+              <input type="submit" value="Réserver en ligne" class="btn btn-primary cartitem">
+            </form>
+          </div>
+        <% else %>
+          <p>Trajet effectué</p>
+        <% end %>
       </div>
     </div>
     <div class="seller-module">
