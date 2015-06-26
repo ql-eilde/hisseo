@@ -40,7 +40,7 @@
       	<% else %>
         	<li class="sign-index"><%= link_to "Connexion", "#login", data: {toggle: "modal"} %></li>
         	<li class="sign-index"><%= link_to "Inscription", "#signup", data: {toggle: "modal"} %></li>
-        	<li class="sell"><%= link_to new_listing_path, data: { no_turbolink: true } do %>
+        	<li class="sell" style="display:none"><%= link_to new_listing_path, data: { no_turbolink: true } do %>
           		<i class="glyphicon glyphicon-plus"></i> PROPOSER UN TRAJET
         		<% end %>
         	</li>
@@ -59,19 +59,31 @@
       <h1>Découvrez les îles autrement</h1>
       <h2>Prenez le large, en cobaturage !</h2>
       <% if !user_signed_in? %>
-        <%= link_to "/users/auth/facebook", class: "btn btn-primary", style: "margin-top:20px;margin-bottom:10px;" do %>
-          <i class="fa fa-facebook-official fa-2x" style="float:left;margin-right:20px;margin-top:4px;"></i>
-          <div id="join-facebook">Inscrivez-vous gratuitement</div>
+        <%= link_to "#signup", data: {toggle: "modal"}, class: "btn btn-primary", style: "margin-top:20px;margin-bottom:10px;background-color:#00c5cc;border-color:#00c5cc" do %>
+          <i class="fa fa-ship fa-2x" style="float:left;margin-right:20px;margin-top:4px;"></i>
+          <div id="join-facebook">Inscrivez-vous pour proposer un trajet</div>
         <% end %>
       <% end %>
     </div>
     <div id="search-bar">
       <div class="search-form">
-        <%= form_tag listings_path, style: "width:730px", method: "get" do %>
-          <input class="form-control search-box" type="text" name="departure" id="search_address_departure" placeholder="De" autofocus="true" />
-          <input class="form-control search-box" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
-          <input type="text" name="date" class="datepicker form-control search-date-box" placeholder="Date" />
-        <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary" %>
+        <%= form_tag listings_path, style: "padding:10px 0 0 50px", method: "get" do %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                <input class="form-control search-box" type="text" name="departure" id="search_address_departure" placeholder="De" autofocus="true" />
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                <input class="form-control search-box" type="text" name="arrival" id="search_address_arrival" placeholder="À" />
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                <input type="text" name="date" class="datepicker form-control search-date-box" placeholder="Date" />
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3" style="padding-left:25px;">
+                <%= submit_tag "Rechercher", name: nil, class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
