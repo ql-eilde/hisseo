@@ -2,7 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   #Replace example.com with your own domain name
-  config.mailer_sender = 'hello@hisseo.co'
+  config.mailer_sender = 'hello@viaboat.fr'
 
   require 'devise/orm/active_record'
   config.case_insensitive_keys = [ :email ]
