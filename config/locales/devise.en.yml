@@ -19,11 +19,11 @@ fr:
       unconfirmed: "Vous devez confirmer votre compte pour continuer. Vérifiez vos emails."
     mailer:
       confirmation_instructions:
-        subject: "Confirmez votre email - hisseo.co"
+        subject: "Confirmez votre email - viaboat.fr"
       reset_password_instructions:
-        subject: "Instructions pour changer le mot de passe - hisseo.co"
+        subject: "Instructions pour changer le mot de passe - viaboat.fr"
       unlock_instructions:
-        subject: "Instructions pour déverrouiller le compte - hisseo.co"
+        subject: "Instructions pour déverrouiller le compte - viaboat.fr"
     omniauth_callbacks:
       failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
       success: 'Authentifié avec succès via %{kind}.'
